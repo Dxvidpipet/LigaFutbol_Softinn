@@ -7,6 +7,7 @@ namespace LigaFutbolSoftInn.App.Consola
     class Program
     {
         private static IRepositorioMunicipio _repoMunicipio = new RepositorioMunicipio(new Persistencia.AppContext());
+        private static IRepositorioNovedad _repoNovedad = new RepositorioNovedad(new Persistencia.AppContext());
         
         static void Main(string[] args)
         {
@@ -14,7 +15,8 @@ namespace LigaFutbolSoftInn.App.Consola
             //CreateMunicipio();
             //UpdateMunicipio();
             //ReadMunicipio(1);
-            DeleteMunicipio(1);
+            //DeleteMunicipio(1);
+            CreateNovedad();
         }
 
         private static void CreateMunicipio()
@@ -46,6 +48,28 @@ namespace LigaFutbolSoftInn.App.Consola
         {
             string mensaje = _repoMunicipio.DeleteMunicipio(idMunicipio);
             Console.WriteLine(mensaje);
+        }
+
+        private static void CreateNovedad()
+        {
+            var novedad = new Novedad
+            {
+                TipoNovedad = TipoNovedad.Goles,
+                MinutoPartidoNovedad = 15,
+            };
+            _repoNovedad.CreateNovedad(novedad);
+        }
+
+        private static void AsignarJugador(int idNovedad, int idJugador)
+        {
+            var jugador = _repoNovedad.AsignarJugador(idNovedad, idJugador);
+            Console.WriteLine(jugador.NombreJugador+" "+jugador.NumeroJugador);
+        }
+
+        private static void AsignarPartido(int idNovedad, int idPartido)
+        {
+            var partido = _repoNovedad.AsignarPartido(idNovedad, idPartido);
+            Console.WriteLine(partido.NombreEquipoLocal+" vs "+partido.NombreEquipoVisitante);
         }
     }
 }
