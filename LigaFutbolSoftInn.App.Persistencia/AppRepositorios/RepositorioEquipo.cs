@@ -30,7 +30,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
 
         Equipo IRepositorioEquipo.UpdateEquipo(Equipo equipo)
         {
-            var equipoEncontrado = _appContext.equipos.FirstOrDefault(m => m.IdEquipo == Equipo.IdEquipo);
+            var equipoEncontrado = _appContext.Equipos.FirstOrDefault(m => m.IdEquipo == equipo.IdEquipo);
             if (equipoEncontrado != null)
             {
                 equipoEncontrado.NombreEquipo = equipo.NombreEquipo;
@@ -44,7 +44,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
         string IRepositorioEquipo.DeleteEquipo(int idEquipo)
         {
             var equipoEncontrado = _appContext.Equipos.FirstOrDefault(m => m.IdEquipo == idEquipo);
-            if (EquipoEncontrado == null)
+            if (equipoEncontrado == null)
                 return "Equipo no encontrado!";
             _appContext.Equipos.Remove(equipoEncontrado);
             _appContext.SaveChanges();
@@ -52,12 +52,12 @@ namespace LigaFutbolSoftInn.App.Persistencia
         }
        
 
-        Equipo IRepositorioEquipo.AsignarMunicipio(int idEquipo, int idMunicipio)
+        Municipio IRepositorioEquipo.AsignarMunicipio(int idEquipo, int idMunicipio)
         {
-            var EquipoEncontrado = _appContext.Equipos.FirstOrDefault(p => p.IdEquipo == idEquipo);
-            if (EquipoEncontrado != null)
+            var equipoEncontrado = _appContext.Equipos.FirstOrDefault(p => p.IdEquipo == idEquipo);
+            if (equipoEncontrado != null)
             { 
-                var municipioEncontrado = _appContext.Municipio.FirstOrDefault(e => e.idMunicipio == idMunicipio);
+                var municipioEncontrado = _appContext.Municipios.FirstOrDefault(e => e.IdMunicipio == idMunicipio);
                 if (municipioEncontrado != null)
                 { 
                     equipoEncontrado.Municipio = municipioEncontrado;

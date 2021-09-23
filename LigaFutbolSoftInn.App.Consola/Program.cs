@@ -10,6 +10,8 @@ namespace LigaFutbolSoftInn.App.Consola
         private static IRepositorioNovedad _repoNovedad = new RepositorioNovedad(new Persistencia.AppContext());
         private static IRepositorioPartido _repoPartido = new RepositorioPartido(new Persistencia.AppContext());
         private static IRepositorioArbitro _repoArbitro = new RepositorioArbitro(new Persistencia.AppContext());
+        private static IRepositorioEquipo _repoEquipo = new RepositorioEquipo(new Persistencia.AppContext());
+        private static IRepositorioEstadio _repoEstadio = new RepositorioEstadio(new Persistencia.AppContext());
         
         static void Main(string[] args)
         {
@@ -26,6 +28,16 @@ namespace LigaFutbolSoftInn.App.Consola
             //UpdateArbitro();
             //ReadArbitro(1);
             //DeleteArbitro(1);
+            //CreateEquipo();
+            //UpdateEquipo();
+            //ReadEquipo(1);
+            //DeleteEquipo(1);
+            //AsignarMunicipio(2, 2);
+            //CreateEstadio();
+            //UpdateEstadio();
+            //ReadEstadio(1);
+            //DeleteEstadio(1);
+            //AsignarEstadioMunicipio(2, 2);
         }
 
         private static void CreateMunicipio()
@@ -162,5 +174,80 @@ namespace LigaFutbolSoftInn.App.Consola
             Console.WriteLine(mensaje);
         }
 
+        private static void CreateEquipo()
+        {
+            var equipo = new Equipo
+            {
+                NombreEquipo = "Deportivo Tapitas"
+            };
+            _repoEquipo.CreateEquipo(equipo);
+        }
+
+        private static void UpdateEquipo()
+        {
+            var equipo = new Equipo
+            {
+                IdEquipo = 2,
+                NombreEquipo = "Real Cartagena"
+            };
+            _repoEquipo.UpdateEquipo(equipo);
+        }
+
+        private static void ReadEquipo(int idEquipo)
+        {
+            var equipo = _repoEquipo.ReadEquipo(idEquipo);
+            Console.WriteLine(equipo.NombreEquipo);
+        }
+
+        private static void DeleteEquipo(int idEquipo)
+        {
+            string mensaje = _repoEquipo.DeleteEquipo(idEquipo);
+            Console.WriteLine(mensaje);
+        }
+
+        private static void AsignarMunicipio(int idEquipo, int idMunicipio)
+        {
+            var municipio = _repoEquipo.AsignarMunicipio(idEquipo, idMunicipio);
+            Console.WriteLine(municipio.NombreMunicipio);
+        }
+
+        private static void CreateEstadio()
+        {
+            var estadio = new Estadio
+            {
+                NombreEstadio = "Allianz Arena",
+                DireccionEstadio = "Calle 52 # 13-15"
+            };
+            _repoEstadio.CreateEstadio(estadio);
+        }
+
+        private static void UpdateEstadio()
+        {
+            var estadio = new Estadio
+            {
+                IdEstadio = 1,
+                NombreEstadio = "Campnou",
+                DireccionEstadio = "Carrera 45 # 14-15"
+            };
+            _repoEstadio.UpdateEstadio(estadio);
+        }
+
+        private static void ReadEstadio(int idEstadio)
+        {
+            var estadio = _repoEstadio.ReadEstadio(idEstadio);
+            Console.WriteLine(estadio.NombreEstadio);
+        }
+
+        private static void DeleteEstadio(int idEstadio)
+        {
+            string mensaje = _repoEstadio.DeleteEstadio(idEstadio);
+            Console.WriteLine(mensaje);
+        }
+
+        private static void AsignarEstadioMunicipio(int idEstadio, int idMunicipio)
+        {
+            var municipio = _repoEstadio.AsignarEstadioMunicipio(idEstadio, idMunicipio);
+            Console.WriteLine(municipio.NombreMunicipio);
+        }
     }
 }
