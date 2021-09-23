@@ -13,6 +13,7 @@ namespace LigaFutbolSoftInn.App.Consola
         private static IRepositorioEquipo _repoEquipo = new RepositorioEquipo(new Persistencia.AppContext());
         private static IRepositorioEstadio _repoEstadio = new RepositorioEstadio(new Persistencia.AppContext());
         private static IRepositorioDirTecnico _repoDirTecnico = new RepositorioDirTecnico(new Persistencia.AppContext());
+        private static IRepositorioJugador _repoJugador = new RepositorioJugador(new Persistencia.AppContext());
         
         static void Main(string[] args)
         {
@@ -44,6 +45,11 @@ namespace LigaFutbolSoftInn.App.Consola
             //ReadDirTecnico(1);
             //DeleteDirTecnico(1);
             //AsignarDirTecnicoEquipo(2, 2);
+            //CreateJugador();
+            //UpdateJugador();
+            //ReadJugador(1);
+            //DeleteJugador(1);
+            //AsignarJugadorEquipo(2, 2);
         }
 
         private static void CreateMunicipio()
@@ -294,6 +300,47 @@ namespace LigaFutbolSoftInn.App.Consola
         private static void AsignarDirTecnicoEquipo(int idDirTecnico, int idEquipo)
         {
             var equipo = _repoDirTecnico.AsignarDirTecnicoEquipo(idDirTecnico, idEquipo);
+            Console.WriteLine(equipo.NombreEquipo);
+        }
+
+        private static void CreateJugador()
+        {
+            var jugador = new Jugador
+            {
+                NombreJugador = "James Rodriguez",
+                NumeroJugador = 10,
+                PosicionJugador = "Mediocampista"
+            };
+            _repoJugador.CreateJugador(jugador);
+        }
+
+        private static void UpdateJugador()
+        {
+            var jugador = new Jugador
+            {
+                IdJugador = 1,
+                NombreJugador = "Radamel Falcao Garcia",
+                NumeroJugador = 9,
+                PosicionJugador = "Delantero Centro"
+            };
+            _repoJugador.UpdateJugador(jugador);
+        }
+
+        private static void ReadJugador(int idJugador)
+        {
+            var jugador = _repoJugador.ReadJugador(idJugador);
+            Console.WriteLine(jugador.NombreJugador);
+        }
+
+        private static void DeleteJugador(int idJugador)
+        {
+            string mensaje = _repoJugador.DeleteJugador(idJugador);
+            Console.WriteLine(mensaje);
+        }
+
+        private static void AsignarJugadorEquipo(int idJugador, int idEquipo)
+        {
+            var equipo = _repoJugador.AsignarJugadorEquipo(idJugador, idEquipo);
             Console.WriteLine(equipo.NombreEquipo);
         }
     }
