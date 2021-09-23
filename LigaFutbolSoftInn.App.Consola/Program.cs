@@ -12,6 +12,7 @@ namespace LigaFutbolSoftInn.App.Consola
         private static IRepositorioArbitro _repoArbitro = new RepositorioArbitro(new Persistencia.AppContext());
         private static IRepositorioEquipo _repoEquipo = new RepositorioEquipo(new Persistencia.AppContext());
         private static IRepositorioEstadio _repoEstadio = new RepositorioEstadio(new Persistencia.AppContext());
+        private static IRepositorioDirTecnico _repoDirTecnico = new RepositorioDirTecnico(new Persistencia.AppContext());
         
         static void Main(string[] args)
         {
@@ -38,6 +39,11 @@ namespace LigaFutbolSoftInn.App.Consola
             //ReadEstadio(1);
             //DeleteEstadio(1);
             //AsignarEstadioMunicipio(2, 2);
+            //CreateDirTecnico();
+            //UpdateDirTecnico();
+            //ReadDirTecnico(1);
+            //DeleteDirTecnico(1);
+            //AsignarDirTecnicoEquipo(2, 2);
         }
 
         private static void CreateMunicipio()
@@ -248,6 +254,47 @@ namespace LigaFutbolSoftInn.App.Consola
         {
             var municipio = _repoEstadio.AsignarEstadioMunicipio(idEstadio, idMunicipio);
             Console.WriteLine(municipio.NombreMunicipio);
+        }
+
+        private static void CreateDirTecnico()
+        {
+            var dirTecnico = new DirTecnico
+            {
+                NombreDirTecnico = "Jose Nestor Pekerman",
+                DocumentoDirTecnico = "1035456875",
+                TelefonoDirTecnico = "3155486285"
+            };
+            _repoDirTecnico.CreateDirTecnico(dirTecnico);
+        }
+
+        private static void UpdateDirTecnico()
+        {
+            var dirTecnico = new DirTecnico
+            {
+                IdDirTecnico = 1,
+                NombreDirTecnico = "Amaranto Perea",
+                DocumentoDirTecnico = "1033456875",
+                TelefonoDirTecnico = "3165486285"
+            };
+            _repoDirTecnico.UpdateDirTecnico(dirTecnico);
+        }
+
+        private static void ReadDirTecnico(int idDirTecnico)
+        {
+            var dirTecnico = _repoDirTecnico.ReadDirTecnico(idDirTecnico);
+            Console.WriteLine(dirTecnico.NombreDirTecnico);
+        }
+
+        private static void DeleteDirTecnico(int idDirTecnico)
+        {
+            string mensaje = _repoDirTecnico.DeleteDirTecnico(idDirTecnico);
+            Console.WriteLine(mensaje);
+        }
+
+        private static void AsignarDirTecnicoEquipo(int idDirTecnico, int idEquipo)
+        {
+            var equipo = _repoDirTecnico.AsignarDirTecnicoEquipo(idDirTecnico, idEquipo);
+            Console.WriteLine(equipo.NombreEquipo);
         }
     }
 }
