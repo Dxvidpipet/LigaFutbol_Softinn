@@ -9,6 +9,7 @@ namespace LigaFutbolSoftInn.App.Consola
         private static IRepositorioMunicipio _repoMunicipio = new RepositorioMunicipio(new Persistencia.AppContext());
         private static IRepositorioNovedad _repoNovedad = new RepositorioNovedad(new Persistencia.AppContext());
         private static IRepositorioPartido _repoPartido = new RepositorioPartido(new Persistencia.AppContext());
+        private static IRepositorioArbitro _repoArbitro = new RepositorioArbitro(new Persistencia.AppContext());
         
         static void Main(string[] args)
         {
@@ -20,6 +21,11 @@ namespace LigaFutbolSoftInn.App.Consola
             //CreateNovedad();
             //CreatePartido();
             //AsignarPartido(1, 1);
+            //GetAllArbitros();
+            //CreateArbitro();
+            //UpdateArbitro();
+            //ReadArbitro(1);
+            //DeleteArbitro(1);
         }
 
         private static void CreateMunicipio()
@@ -109,5 +115,52 @@ namespace LigaFutbolSoftInn.App.Consola
             var estadio = _repoPartido.AsignarEstadio(idPartido, idEstadio);
             Console.WriteLine(estadio.NombreEstadio);
         }
+
+        private static void GetAllArbitros()
+        {
+            var arbitros = _repoArbitro.GetAllArbitros();
+            foreach (var a in arbitros)
+            {
+                Console.WriteLine(a.NombreArbitro+" "+a.ColegioArbitro);
+            }
+        }
+
+        private static void CreateArbitro()
+        {
+            var arbitro = new Arbitro
+            {
+                NombreArbitro = "Oscar Julian Ruiz",
+                DocumentoArbitro = "1032789456",
+                TelefonoArbitro = "3124567852",
+                ColegioArbitro = "Colegio Mayor de Arbitros"
+            };
+            _repoArbitro.CreateArbitro(arbitro);
+        }
+
+        private static void UpdateArbitro()
+        {
+            var arbitro = new Arbitro
+            {
+                IdArbitro = 1,
+                NombreArbitro = "Wilmar Roldan",
+                DocumentoArbitro = "10324789456",
+                TelefonoArbitro = "3134567852",
+                ColegioArbitro = "Arbitros Unidos"
+            };
+            _repoArbitro.UpdateArbitro(arbitro);
+        }
+
+        private static void ReadArbitro(int idArbitro)
+        {
+            var arbitro = _repoArbitro.ReadArbitro(idArbitro);
+            Console.WriteLine(arbitro.NombreArbitro);
+        }
+
+        private static void DeleteArbitro(int idArbitro)
+        {
+            string mensaje = _repoArbitro.DeleteArbitro(idArbitro);
+            Console.WriteLine(mensaje);
+        }
+
     }
 }

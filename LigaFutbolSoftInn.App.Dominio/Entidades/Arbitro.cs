@@ -9,6 +9,5 @@ namespace LigaFutbolSoftInn.App.Dominio
         public string DocumentoArbitro { get; set; }
 		public string TelefonoArbitro { get; set; }
 		public string ColegioArbitro { get; set; }
-        public Municipio Municipio { set; get; }
     }
 }

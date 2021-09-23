@@ -59,7 +59,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
             var partidoEncontrado = _appContext.Partidos.FirstOrDefault(p => p.IdPartido == idPartido);
             if (partidoEncontrado != null)
             { 
-                var arbitroEncontrado = _appContext.Abitros.FirstOrDefault(a => a.IdArbitro == idArbitro);
+                var arbitroEncontrado = _appContext.Arbitros.FirstOrDefault(a => a.IdArbitro == idArbitro);
                 if (arbitroEncontrado != null)
                 { 
                     partidoEncontrado.Arbitro = arbitroEncontrado;

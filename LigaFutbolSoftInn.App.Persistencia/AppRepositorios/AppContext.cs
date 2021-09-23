@@ -5,7 +5,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public class AppContext : DbContext
     {
-        public DbSet<Arbitro> Abitros { get; set; }
+        public DbSet<Arbitro> Arbitros { get; set; }
         public DbSet<DirTecnico> DirTecnicos { get; set; }
         public DbSet<Equipo> Equipos { get; set; }
         public DbSet<Estadio> Estadios { get; set; }
