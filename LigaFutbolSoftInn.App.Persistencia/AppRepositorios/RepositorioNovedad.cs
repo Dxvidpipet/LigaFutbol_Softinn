@@ -9,12 +9,16 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public class RepositorioNovedad: IRepositorioNovedad
     {
+        /*
         private readonly AppContext _appContext;
 
         public RepositorioNovedad(AppContext appContext)
         {
             _appContext = appContext;
         }
+        */
+
+        private readonly AppContext _appContext = new AppContext();
 
         Novedad IRepositorioNovedad.CreateNovedad(Novedad novedad)
         {

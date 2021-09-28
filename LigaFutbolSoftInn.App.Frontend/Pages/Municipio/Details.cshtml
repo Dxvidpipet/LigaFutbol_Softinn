@@ -1,0 +1,16 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.DetailsMunicipioModel
+@{
+}
+<h1>Detalles del municipio</h1>
+<table class="table table-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <td>@Model.municipio.IdMunicipio</td>
+    </tr>
+    <tr>
+        <th scope="col">Nombre</th>
+        <td>@Model.municipio.NombreMunicipio</td>
+    </tr>
+</table>
+<a class="btn btn-primary" asp-page="./Index">Volver</a>

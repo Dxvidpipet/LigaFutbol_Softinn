@@ -1,0 +1,25 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.IndexMunicipioModel
+@{
+}
+<h1>Listado de municipios</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var municipio in Model.municipios)
+        {
+            <tr>
+                <td>@municipio.NombreMunicipio</td>
+                <td>
+                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@municipio.IdMunicipio">
+                        Detalle
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

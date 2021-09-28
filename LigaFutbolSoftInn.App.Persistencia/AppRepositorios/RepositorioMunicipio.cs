@@ -9,12 +9,15 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public class RepositorioMunicipio: IRepositorioMunicipio
     {
+        /*
         private readonly AppContext _appContext;
 
         public RepositorioMunicipio(AppContext appContext)
         {
             _appContext = appContext;
         }
+        */
+        private readonly AppContext _appContext = new AppContext();
 
         IEnumerable<Municipio> IRepositorioMunicipio.GetAllMunicipios()
         {
