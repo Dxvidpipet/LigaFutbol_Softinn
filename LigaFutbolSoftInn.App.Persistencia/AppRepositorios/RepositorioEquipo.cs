@@ -18,7 +18,10 @@ namespace LigaFutbolSoftInn.App.Persistencia
         }
         */
         private readonly AppContext _appContext = new AppContext();
-
+        IEnumerable<Equipo> IRepositorioEquipo.GetAllEquipos()
+        {
+            return _appContext.Equipos;
+        }
         Equipo IRepositorioEquipo.CreateEquipo(Equipo equipo)
         {
             var equipoAdicionado = _appContext.Equipos.Add(equipo);

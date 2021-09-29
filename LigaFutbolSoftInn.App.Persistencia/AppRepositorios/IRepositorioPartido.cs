@@ -6,6 +6,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public interface IRepositorioPartido
     {
+        IEnumerable<Partido> GetAllPartidos();
         Partido CreatePartido(Partido partido);
         Equipo AsignarEquipoLocal(int idPartido, int idEquipo);
         Equipo AsignarEquipoVisitante(int idPartido, int idEquipo);

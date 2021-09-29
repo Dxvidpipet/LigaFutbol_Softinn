@@ -18,7 +18,10 @@ namespace LigaFutbolSoftInn.App.Persistencia
         }
         */
         private readonly AppContext _appContext = new AppContext();
-
+        IEnumerable<Partido> IRepositorioPartido.GetAllPartidos()
+        {
+            return _appContext.Partidos;
+        }
         Partido IRepositorioPartido.CreatePartido(Partido partido)
         {
             var partidoAdicionado = _appContext.Partidos.Add(partido);
