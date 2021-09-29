@@ -1,5 +1,40 @@
 ﻿@page
-@model LigaFutbolSoftInn.App.Frontend.Pages.Partido.IndexPartidoModel
+@model LigaFutbolSoftInn.App.Frontend.Pages.IndexPartidoModel
 @{
 }
-<h1>Listado Partidos</h1>
+<h1>Listado de Partidos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id Partido</th>
+            <th scope="col">Fecha Partido</th>
+            @*<th scope="col">Nombre Equipo Local Id Equipo</th>
+            <th scope="col">Nombre Equipo Visitante Id Equipo</th>*@
+            <th scope="col">Marcador Local</th>
+            <th scope="col">Marcador Visitante</th>
+            @*<th scope="col">Estadio Id Estadio</th>
+            <th scope="col">Arbitro Id Arbitro</th>*@
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var partido in Model.partidos)
+        {
+            <tr>
+                <td>@partido.IdPartido</td>
+                <td>@partido.FechaPartido</td>
+                @*<td>@partido.NombreEquipoLocal</td>
+                <td>@partido.NombreEquipoVisitante</td>*@
+                <td>@partido.MarcadorLocal</td>
+                <td>@partido.MarcadorVisitante</td>
+                @*<td>@partido.Estadio</td>
+                <td>@partido.Arbitro</td>*@
+            </tr>
+             <td>
+                    <a class="btn btn-primary" asp-page="./DetailsPartido" asp-route-id="@partido.IdPartido">
+                        Detalle
+                    </a>
+                </td>
+        }
+    </tbody>
+</table>

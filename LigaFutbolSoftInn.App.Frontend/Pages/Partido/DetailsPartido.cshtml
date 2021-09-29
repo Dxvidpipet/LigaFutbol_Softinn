@@ -1,0 +1,40 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.DetailsPartidoModel
+@{
+}
+<h1>Detalles del Partido</h1>
+<table class="table table-dark">
+    <tr>
+        <th scope="col">ID del Partido</th>
+        <td>@Model.partido.IdPartido</td>
+    </tr>
+    <tr>
+        <th scope="col">Fecha Partido</th>
+        <td>@Model.partido.FechaPartido</td>
+    </tr>
+    @*<tr>
+        <th scope="col">Nombre Equipo Local Id Equipo</th>
+        <td>@Model.partido.NombreEquipoLocal</td>
+    </tr>
+    <tr>
+        <th scope="col">Nombre Equipo Visitante Id Equipo</th>
+        <td>@Model.partido.NombreEquipoVisitante</td>
+    </tr>*@
+    <tr>
+        <th scope="col">Marcador Local</th>
+        <td>@Model.partido.MarcadorLocal</td>
+    </tr>
+    <tr>
+        <th scope="col">Marcador Visitante</th>
+        <td>@Model.partido.MarcadorVisitante</td>
+    </tr>
+    @*<tr>
+        <th scope="col">Estadio Id Estadio</th>
+        <td>@Model.partido.Estadio</td>
+    </tr>
+    <tr>
+        <th scope="col">Arbitro Id Arbitro</th>
+        <td>@Model.partido.Arbitro</td>
+    </tr>*@
+</table>
+<a class="btn btn-primary" asp-page="./IndexPartido">Volver</a>

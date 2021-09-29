@@ -22,6 +22,12 @@ namespace LigaFutbolSoftInn.App.Persistencia
         {
             return _appContext.Partidos;
         }
+
+        Partido IRepositorioPartido.ReadPartido(int idPartido)
+        {
+            var partidoEncontrado = _appContext.Partidos.FirstOrDefault(m => m.IdPartido == idPartido);
+            return partidoEncontrado;
+        }
         Partido IRepositorioPartido.CreatePartido(Partido partido)
         {
             var partidoAdicionado = _appContext.Partidos.Add(partido);

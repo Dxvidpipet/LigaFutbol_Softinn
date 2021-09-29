@@ -6,19 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using LigaFutbolSoftInn.App.Persistencia;
 using LigaFutbolSoftInn.App.Dominio;
-namespace LigaFutbolSoftInn.App.Frontend.Pages.Equipo
+namespace LigaFutbolSoftInn.App.Frontend.Pages
 {
     public class IndexEquipoModel : PageModel
     {
-        private readonly IRepositorioEquipo _repoEquipo;
+     private readonly IRepositorioEquipo _repoEquipo;
         public IEnumerable<Equipo> equipos {get; set;}
-         public IndexEquipoModel(IRepositorioEquipo repoEquipo)
+        public IndexEquipoModel(IRepositorioEquipo repoEquipo)
         {
-            _repoEquipo = repoEquipo;
+            _repoEquipo= repoEquipo;
         }
         public void OnGet()
         {
-              equipos = _repoEquipo.GetAllEquipos();
+            equipos = _repoEquipo.GetAllEquipos();
         }
     }
 }
