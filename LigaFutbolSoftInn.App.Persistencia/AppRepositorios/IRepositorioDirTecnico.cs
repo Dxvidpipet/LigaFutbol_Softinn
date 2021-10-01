@@ -6,6 +6,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public interface IRepositorioDirTecnico
     {
+        IEnumerable<DirTecnico> GetAllDirTecnicos();
         DirTecnico CreateDirTecnico(DirTecnico dirTecnico);
         DirTecnico ReadDirTecnico(int idDirTecnico);
         DirTecnico UpdateDirTecnico(DirTecnico dirTecnico);

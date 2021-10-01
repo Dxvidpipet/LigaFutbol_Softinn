@@ -28,6 +28,8 @@ namespace LigaFutbolSoftInn.App.Frontend
             services.AddSingleton<IRepositorioMunicipio, RepositorioMunicipio>();
             services.AddSingleton<IRepositorioEquipo, RepositorioEquipo>();
             services.AddSingleton<IRepositorioPartido, RepositorioPartido>();
+            services.AddSingleton<IRepositorioArbitro, RepositorioArbitro>();
+            services.AddSingleton<IRepositorioDirTecnico, RepositorioDirTecnico>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

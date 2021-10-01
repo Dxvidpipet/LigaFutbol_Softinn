@@ -1,0 +1,28 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.DetailsDirTecnicosModel
+@{
+}
+<h1>Detalles del Director Técnico</h1>
+<table class="table table-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <td>@Model.dirTecnico.IdDirTecnico</td>
+    </tr>
+    <tr>
+        <th scope="col">Nombre</th>
+        <td>@Model.dirTecnico.NombreDirTecnico</td>
+    </tr>
+    <tr>
+        <th scope="col">Documento</th>
+        <td>@Model.dirTecnico.DocumentoDirTecnico</td>
+    </tr>
+    <tr>
+        <th scope="col">Telefono</th>
+        <td>@Model.dirTecnico.TelefonoDirTecnico</td>
+    </tr>
+    <tr>
+        <th scope="col">Equipo</th>
+        <td>@Model.dirTecnico.Equipo</td>
+    </tr>
+</table>
+<a class="btn btn-primary" asp-page="./IndexDirTecnicos">Volver</a>

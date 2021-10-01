@@ -20,6 +20,11 @@ namespace LigaFutbolSoftInn.App.Persistencia
 
         private readonly AppContext _appContext = new AppContext();
 
+        IEnumerable<DirTecnico> IRepositorioDirTecnico.GetAllDirTecnicos()
+        {
+            return _appContext.DirTecnicos;
+        }
+
         DirTecnico IRepositorioDirTecnico.CreateDirTecnico(DirTecnico dirTecnico)
         {
             var dirTecnicoAdicionado = _appContext.DirTecnicos.Add(dirTecnico);

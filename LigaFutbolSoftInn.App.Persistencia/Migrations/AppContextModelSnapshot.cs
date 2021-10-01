@@ -32,9 +32,6 @@ namespace LigaFutbolSoftInn.App.Persistencia.Migrations
                     b.Property<string>("DocumentoArbitro")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MunicipioIdMunicipio")
-                        .HasColumnType("int");
-
                     b.Property<string>("NombreArbitro")
                         .HasColumnType("nvarchar(max)");
 
@@ -43,9 +40,7 @@ namespace LigaFutbolSoftInn.App.Persistencia.Migrations
 
                     b.HasKey("IdArbitro");
 
-                    b.HasIndex("MunicipioIdMunicipio");
-
-                    b.ToTable("Abitros");
+                    b.ToTable("Arbitros");
                 });
 
             modelBuilder.Entity("LigaFutbolSoftInn.App.Dominio.DirTecnico", b =>
@@ -225,15 +220,6 @@ namespace LigaFutbolSoftInn.App.Persistencia.Migrations
                     b.HasIndex("NombreEquipoVisitanteIdEquipo");
 
                     b.ToTable("Partidos");
-                });
-
-            modelBuilder.Entity("LigaFutbolSoftInn.App.Dominio.Arbitro", b =>
-                {
-                    b.HasOne("LigaFutbolSoftInn.App.Dominio.Municipio", "Municipio")
-                        .WithMany()
-                        .HasForeignKey("MunicipioIdMunicipio");
-
-                    b.Navigation("Municipio");
                 });
 
             modelBuilder.Entity("LigaFutbolSoftInn.App.Dominio.DirTecnico", b =>
