@@ -6,6 +6,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public interface IRepositorioJugador
     {
+        IEnumerable<Jugador> GetAllJugadores();
         Jugador CreateJugador(Jugador jugador);
         Jugador ReadJugador(int idJugador);
         Jugador UpdateJugador(Jugador jugador);

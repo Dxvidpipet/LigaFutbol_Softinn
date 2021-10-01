@@ -7,6 +7,8 @@ namespace LigaFutbolSoftInn.App.Persistencia
     public interface IRepositorioEstadio
     {
         Estadio CreateEstadio(Estadio estadio);
+        IEnumerable<Estadio> GetAllEstadios();
+
         Estadio ReadEstadio(int idEstadio);
         Estadio UpdateEstadio(Estadio estadio);
         string DeleteEstadio(int idEstadio);

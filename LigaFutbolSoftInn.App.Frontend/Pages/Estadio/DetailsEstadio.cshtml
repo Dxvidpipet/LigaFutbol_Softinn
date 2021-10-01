@@ -1,0 +1,20 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.DetailsEstadioModel
+@{
+}
+<h1>Detalles del Estadio</h1>
+<table class="table table-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <td>@Model.estadio.IdEstadio</td>
+    </tr>
+    <tr>
+        <th scope="col">Nombre Estadio</th>
+        <td>@Model.estadio.NombreEstadio</td>
+    </tr>
+    <tr>
+        <th scope="col">Dirección Estadio</th>
+        <td>@Model.estadio.DireccionEstadio</td>
+    </tr>
+</table>
+<a class="btn btn-primary" asp-page="./IndexEstadio">Volver</a>

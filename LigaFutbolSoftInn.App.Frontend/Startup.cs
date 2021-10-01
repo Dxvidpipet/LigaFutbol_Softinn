@@ -19,15 +19,25 @@ namespace LigaFutbolSoftInn.App.Frontend
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration) 
+        {
+            this.Configuration = configuration;
+               
+        }
+                public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddSingleton<IRepositorioEstadio, RepositorioEstadio>();        
             services.AddSingleton<IRepositorioMunicipio, RepositorioMunicipio>();
             services.AddSingleton<IRepositorioEquipo, RepositorioEquipo>();
             services.AddSingleton<IRepositorioPartido, RepositorioPartido>();
+            services.AddSingleton<IRepositorioArbitro, RepositorioArbitro>();
+            services.AddSingleton<IRepositorioDirTecnico, RepositorioDirTecnico>();
+            services.AddSingleton<IRepositorioJugador, RepositorioJugador>();
+            services.AddSingleton<IRepositorioNovedad, RepositorioNovedad>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
