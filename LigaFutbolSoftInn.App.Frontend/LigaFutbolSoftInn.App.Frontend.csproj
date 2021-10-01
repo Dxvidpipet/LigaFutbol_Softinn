@@ -1,10 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+<<<<<<< HEAD
 <ItemGroup>
     <ProjectReference Include="..\LigaFutbolSoftInn.App.Persistencia\LigaFutbolSoftInn.App.Persistencia.csproj" />
     <ProjectReference Include="..\LigaFutbolSoftInn.App.Dominio\LigaFutbolSoftInn.App.Dominio.csproj" />
   </ItemGroup>
   
+=======
+  <ItemGroup>
+    <ProjectReference Include="..\LigaFutbolSoftInn.App.Persistencia\LigaFutbolSoftInn.App.Persistencia.csproj" />
+    <ProjectReference Include="..\LigaFutbolSoftInn.App.Dominio\LigaFutbolSoftInn.App.Dominio.csproj" />
+  </ItemGroup>
+
+>>>>>>> 35b4542d87f56fde011a5bb81b8a7ac836b3e3cf
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>

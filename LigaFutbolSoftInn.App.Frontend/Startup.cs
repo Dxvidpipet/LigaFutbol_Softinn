@@ -25,7 +25,16 @@ namespace LigaFutbolSoftInn.App.Frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+<<<<<<< HEAD
             services.AddSingleton<IRepositorioEstadio, RepositorioEstadio>();        }
+=======
+            services.AddSingleton<IRepositorioMunicipio, RepositorioMunicipio>();
+            services.AddSingleton<IRepositorioEquipo, RepositorioEquipo>();
+            services.AddSingleton<IRepositorioPartido, RepositorioPartido>();
+            services.AddSingleton<IRepositorioArbitro, RepositorioArbitro>();
+            services.AddSingleton<IRepositorioDirTecnico, RepositorioDirTecnico>();
+        }
+>>>>>>> 35b4542d87f56fde011a5bb81b8a7ac836b3e3cf
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
