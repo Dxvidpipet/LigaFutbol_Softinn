@@ -9,23 +9,17 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public class RepositorioEstadio: IRepositorioEstadio
     {
-<<<<<<< HEAD
     private readonly AppContext _appContext = new AppContext();
-          IEnumerable<Estadio> IRepositorioEstadio.GetAllEstadios()
-=======
+        IEnumerable<Estadio> IRepositorioEstadio.GetAllEstadios();
         /*
         private readonly AppContext _appContext;
 
         public RepositorioEstadio(AppContext appContext)
->>>>>>> 35b4542d87f56fde011a5bb81b8a7ac836b3e3cf
         {
             return _appContext.Estadios;
         }
-<<<<<<< HEAD
-=======
         */
         private readonly AppContext _appContext = new AppContext();
->>>>>>> 35b4542d87f56fde011a5bb81b8a7ac836b3e3cf
 
         Estadio IRepositorioEstadio.CreateEstadio(Estadio estadio)
         {
