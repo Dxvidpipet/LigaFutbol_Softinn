@@ -10,7 +10,10 @@ namespace LigaFutbolSoftInn.App.Persistencia
     public class RepositorioEstadio: IRepositorioEstadio
     {
     private readonly AppContext _appContext = new AppContext();
-        IEnumerable<Estadio> IRepositorioEstadio.GetAllEstadios();
+        IEnumerable<Estadio> IRepositorioEstadio.GetAllEstadios()
+        {
+            return _appContext.Estadios;
+        }
         /*
         private readonly AppContext _appContext;
 
@@ -19,7 +22,6 @@ namespace LigaFutbolSoftInn.App.Persistencia
             return _appContext.Estadios;
         }
         */
-        private readonly AppContext _appContext = new AppContext();
 
         Estadio IRepositorioEstadio.CreateEstadio(Estadio estadio)
         {

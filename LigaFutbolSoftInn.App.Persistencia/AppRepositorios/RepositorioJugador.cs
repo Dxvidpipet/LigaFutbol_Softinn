@@ -18,6 +18,10 @@ namespace LigaFutbolSoftInn.App.Persistencia
         }
         */
         private readonly AppContext _appContext = new AppContext();
+        IEnumerable<Jugador> IRepositorioJugador.GetAllJugadores()
+        {
+            return _appContext.Jugadores;
+        }
 
         Jugador IRepositorioJugador.CreateJugador(Jugador jugador)
         {
