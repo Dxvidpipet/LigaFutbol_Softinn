@@ -19,12 +19,21 @@ namespace LigaFutbolSoftInn.App.Persistencia
         */
 
         private readonly AppContext _appContext = new AppContext();
+        IEnumerable<Novedad> IRepositorioNovedad.GetAllNovedades()
+        {
+            return _appContext.Novedades;
+        }
 
         Novedad IRepositorioNovedad.CreateNovedad(Novedad novedad)
         {
             var novedadAdicionada = _appContext.Novedades.Add(novedad);
             _appContext.SaveChanges();
             return novedadAdicionada.Entity;
+        }
+        Novedad IRepositorioNovedad.ReadNovedad(int idNovedad)
+        {
+            var novedadEncontrado = _appContext.Novedades.FirstOrDefault(m => m.IdNovedad == idNovedad);
+            return novedadEncontrado;
         }
 
         Jugador IRepositorioNovedad.AsignarJugador(int idNovedad, int idJugador)

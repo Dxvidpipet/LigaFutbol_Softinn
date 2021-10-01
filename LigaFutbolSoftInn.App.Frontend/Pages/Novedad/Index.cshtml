@@ -1,0 +1,33 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.IndexNovedadModel
+@{
+}
+<h1>Listado de Novedades</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Novedades</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Minuto</th>
+            <th scope="col">Jugador</th>
+            <th scope="col">Partido</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var novedad in Model.novedades)
+        {
+            <tr>
+                <td>@novedad.IdNovedad</td>
+                <td>@novedad.TipoNovedad</td>
+                <td>@novedad.MinutoPartidoNovedad</td>
+                <td>@novedad.Jugador</td>
+                <td>@novedad.Partido</td>
+                <td>
+                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@novedad.IdNovedad">
+                        Detalle
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

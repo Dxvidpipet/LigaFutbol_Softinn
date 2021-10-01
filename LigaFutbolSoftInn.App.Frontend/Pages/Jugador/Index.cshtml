@@ -1,0 +1,33 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.IndexJugadorModel
+@{
+}
+<h1>Listado Jugadores</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id Jugador</th>
+            <th scope="col">Numero Jugador</th>
+            <th scope="col">Numero Jugador</th>
+            <th scope="col">Posicion Jugador</th>
+            <th scope="col">Equipo </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var jugador in Model.jugadores)
+        {
+            <tr>
+                <td>@jugador.IdJugador</td>
+                <td>@jugador.NombreJugador</td>
+                <td>@jugador.NumeroJugador</td>
+                <td>@jugador.PosicionJugador</td>
+                <td>@jugador.Equipo</td>           
+            </tr>
+             <td>
+                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@jugador.IdJugador">
+                        Detalle
+                    </a>
+            </td>
+        }
+    </tbody>
+</table>

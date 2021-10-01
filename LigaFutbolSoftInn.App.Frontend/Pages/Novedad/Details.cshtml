@@ -1,0 +1,28 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.DetailsNovedadModel
+@{
+}
+<h1>Detalles de Novedades</h1>
+<table class="table table-dark">
+    <tr>
+        <th scope="col">Novedades</th>
+        <td>@Model.novedad.IdNovedad</td>
+    </tr>
+    <tr>
+        <th scope="col">Tipo</th>
+        <td>@Model.novedad.TipoNovedad</td>
+    </tr>
+    <tr>
+        <th scope="col">Minuto</th>
+        <td>@Model.novedad.MinutoPartidoNovedad</td>
+    </tr>
+    <tr>
+        <th scope="col">Jugador</th>
+        <td>@Model.novedad.Jugador</td>
+    </tr>
+    <tr>
+        <th scope="col">Partido</th>
+        <td>@Model.novedad.Partido</td>
+    </tr>
+</table>
+<a class="btn btn-primary" asp-page="./Index">Volver</a>
