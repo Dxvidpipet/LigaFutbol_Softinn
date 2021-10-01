@@ -11,9 +11,10 @@ namespace LigaFutbolSoftInn.App.Consola
         private static IRepositorioPartido _repoPartido = new RepositorioPartido(new Persistencia.AppContext());
         private static IRepositorioArbitro _repoArbitro = new RepositorioArbitro(new Persistencia.AppContext());
         private static IRepositorioEquipo _repoEquipo = new RepositorioEquipo(new Persistencia.AppContext());
-        private static IRepositorioEstadio _repoEstadio = new RepositorioEstadio(new Persistencia.AppContext());
         private static IRepositorioDirTecnico _repoDirTecnico = new RepositorioDirTecnico(new Persistencia.AppContext());
         private static IRepositorioJugador _repoJugador = new RepositorioJugador(new Persistencia.AppContext());
+        private static IRepositorioEstadio _repoEstadio = new RepositorioEstadio(new Persistencia.AppContext());
+
         
         static void Main(string[] args)
         {
@@ -35,7 +36,7 @@ namespace LigaFutbolSoftInn.App.Consola
             //ReadEquipo(1);
             //DeleteEquipo(1);
             //AsignarMunicipio(2, 2);
-            //CreateEstadio();
+            CreateEstadio();
             //UpdateEstadio();
             //ReadEstadio(1);
             //DeleteEstadio(1);

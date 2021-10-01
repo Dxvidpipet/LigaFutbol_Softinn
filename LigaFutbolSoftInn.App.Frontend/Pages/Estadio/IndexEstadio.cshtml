@@ -1,0 +1,34 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.IndexEstadioModel
+@{
+}
+
+<h1>Listado Equipos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id Estadio</th>
+            <th scope="col">Nombre Estadio</th>
+            <th scope="col">Direccion Estadio</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var estadio in Model.estadios)
+        {
+            <tr>
+                <td>@estadio.IdEstadio</td>
+                <td>@estadio.NombreEstadio</td>
+                <td>@estadio.DireccionEstadio</td>
+
+            
+            </tr>
+             <td>
+                    <a class="btn btn-primary" asp-page="./DetailsEstadio" asp-route-id="@estadio.IdEstadio">
+                        Detalle
+                    </a>
+                </td>
+        }
+    </tbody>
+</table>
+
