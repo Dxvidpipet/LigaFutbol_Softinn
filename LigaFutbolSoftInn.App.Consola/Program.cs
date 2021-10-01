@@ -41,7 +41,7 @@ namespace LigaFutbolSoftInn.App.Consola
             //DeleteArbitro(1);
             //CreateEquipo();
             //UpdateEquipo();
-            //ReadEquipo(1);
+            ReadEquipo(1);
             //DeleteEquipo(1);
             //AsignarMunicipio(2, 2);
             //CreateEstadio();
@@ -218,6 +218,12 @@ namespace LigaFutbolSoftInn.App.Consola
         {
             var equipo = _repoEquipo.ReadEquipo(idEquipo);
             Console.WriteLine(equipo.NombreEquipo);
+            Console.WriteLine(equipo.Municipio);
+            if (equipo.Municipio==null)
+            {
+             Console.WriteLine("VACIO");
+            }
+           
         }
 
         private static void DeleteEquipo(int idEquipo)
@@ -229,6 +235,7 @@ namespace LigaFutbolSoftInn.App.Consola
         private static void AsignarMunicipio(int idEquipo, int idMunicipio)
         {
             var municipio = _repoEquipo.AsignarMunicipio(idEquipo, idMunicipio);
+
             Console.WriteLine(municipio.NombreMunicipio);
         }
 
