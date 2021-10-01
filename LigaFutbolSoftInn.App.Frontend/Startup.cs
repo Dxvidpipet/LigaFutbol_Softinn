@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using LigaFutbolSoftInn.App.Persistencia;
 
-
 namespace LigaFutbolSoftInn.App.Frontend
 {
     public class Startup

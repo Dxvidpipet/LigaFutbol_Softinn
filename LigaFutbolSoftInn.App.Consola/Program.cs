@@ -16,6 +16,15 @@ namespace LigaFutbolSoftInn.App.Consola
         private static IRepositorioEstadio _repoEstadio = new RepositorioEstadio(new Persistencia.AppContext());
 
         
+        private static IRepositorioMunicipio _repoMunicipio = new RepositorioMunicipio();
+        private static IRepositorioNovedad _repoNovedad = new RepositorioNovedad();
+        private static IRepositorioPartido _repoPartido = new RepositorioPartido();
+        private static IRepositorioArbitro _repoArbitro = new RepositorioArbitro();
+        private static IRepositorioEquipo _repoEquipo = new RepositorioEquipo();
+        private static IRepositorioEstadio _repoEstadio = new RepositorioEstadio();
+        private static IRepositorioDirTecnico _repoDirTecnico = new RepositorioDirTecnico();
+        private static IRepositorioJugador _repoJugador = new RepositorioJugador();
+
         static void Main(string[] args)
         {
             Console.WriteLine("Wellcome to LigaFutbolSoftInn!");

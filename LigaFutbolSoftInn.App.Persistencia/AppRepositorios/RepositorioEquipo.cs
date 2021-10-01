@@ -9,11 +9,18 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public class RepositorioEquipo: IRepositorioEquipo
     {
+        /*
         private readonly AppContext _appContext;
 
         public RepositorioEquipo(AppContext appContext)
         {
             _appContext = appContext;
+        }
+        */
+        private readonly AppContext _appContext = new AppContext();
+        IEnumerable<Equipo> IRepositorioEquipo.GetAllEquipos()
+        {
+            return _appContext.Equipos;
         }
         Equipo IRepositorioEquipo.CreateEquipo(Equipo equipo)
         {

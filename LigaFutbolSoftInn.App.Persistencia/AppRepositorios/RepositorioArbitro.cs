@@ -9,12 +9,15 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public class RepositorioArbitro: IRepositorioArbitro
     {
+        /*
         private readonly AppContext _appContext;
 
         public RepositorioArbitro(AppContext appContext)
         {
             _appContext = appContext;
         }
+        */
+        private readonly AppContext _appContext = new AppContext();
 
         IEnumerable<Arbitro> IRepositorioArbitro.GetAllArbitros()
         {

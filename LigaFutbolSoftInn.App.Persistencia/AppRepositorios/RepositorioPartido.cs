@@ -9,13 +9,25 @@ namespace LigaFutbolSoftInn.App.Persistencia
 {
     public class RepositorioPartido: IRepositorioPartido
     {
+        /*
         private readonly AppContext _appContext;
 
         public RepositorioPartido(AppContext appContext)
         {
             _appContext = appContext;
         }
+        */
+        private readonly AppContext _appContext = new AppContext();
+        IEnumerable<Partido> IRepositorioPartido.GetAllPartidos()
+        {
+            return _appContext.Partidos;
+        }
 
+        Partido IRepositorioPartido.ReadPartido(int idPartido)
+        {
+            var partidoEncontrado = _appContext.Partidos.FirstOrDefault(m => m.IdPartido == idPartido);
+            return partidoEncontrado;
+        }
         Partido IRepositorioPartido.CreatePartido(Partido partido)
         {
             var partidoAdicionado = _appContext.Partidos.Add(partido);
