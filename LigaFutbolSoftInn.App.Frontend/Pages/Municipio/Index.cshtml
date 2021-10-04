@@ -3,6 +3,7 @@
 @{
 }
 <h1>Listado de municipios</h1>
+<a class="btn btn-primary" asp-page="./Create">Nuevo Municipio</a>
 <table class="table">
     <thead>
         <tr>
@@ -15,9 +16,8 @@
             <tr>
                 <td>@municipio.NombreMunicipio</td>
                 <td>
-                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@municipio.IdMunicipio">
-                        Detalle
-                    </a>
+                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@municipio.IdMunicipio">Detalle</a>
+                    <a class="btn btn-secondary" asp-page="./Edit" asp-route-id="@municipio.IdMunicipio">Editar</a>
                 </td>
             </tr>
         }

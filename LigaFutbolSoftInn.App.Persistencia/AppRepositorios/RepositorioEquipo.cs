@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Security.AccessControl;
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using LigaFutbolSoftInn.App.Dominio;
 using LigaFutbolSoftInn.App.Persistencia;
 
@@ -31,8 +32,11 @@ namespace LigaFutbolSoftInn.App.Persistencia
 
         Equipo IRepositorioEquipo.ReadEquipo(int idEquipo)
         {
-            var equipoEncontrado = _appContext.Equipos.FirstOrDefault(m => m.IdEquipo == idEquipo);
-            return equipoEncontrado;
+            var equipo = _appContext.Equipos
+                        .Where(e => e.IdEquipo == idEquipo)
+                        .Include(p => p.Municipio)
+                        .FirstOrDefault();
+            return equipo;
         }
 
         Equipo IRepositorioEquipo.UpdateEquipo(Equipo equipo)
@@ -61,10 +65,10 @@ namespace LigaFutbolSoftInn.App.Persistencia
 
         Municipio IRepositorioEquipo.AsignarMunicipio(int idEquipo, int idMunicipio)
         {
-            var equipoEncontrado = _appContext.Equipos.FirstOrDefault(p => p.IdEquipo == idEquipo);
+            var equipoEncontrado = _appContext.Equipos.Find(idEquipo);
             if (equipoEncontrado != null)
             { 
-                var municipioEncontrado = _appContext.Municipios.FirstOrDefault(e => e.IdMunicipio == idMunicipio);
+                var municipioEncontrado = _appContext.Municipios.Find(idMunicipio);
                 if (municipioEncontrado != null)
                 { 
                     equipoEncontrado.Municipio = municipioEncontrado;

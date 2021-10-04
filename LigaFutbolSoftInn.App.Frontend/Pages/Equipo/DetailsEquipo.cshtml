@@ -13,8 +13,17 @@
         <td>@Model.equipo.NombreEquipo</td>
     </tr>
     <tr>
-        @*<th scope="col">Municipio</th>
-        <td>@Model.equipo.Municipio</td>*@
+        <th scope="col">Municipio</th>
+        @if (Model.equipo.Municipio == null)
+        {
+            <td>
+                <a class="btn btn-primary" asp-page="./AddMunicipio" asp-route-id="@Model.equipo.IdEquipo">Asignar Municipio</a>
+            </td>
+        }
+        else
+        {
+            <td>@Model.equipo.Municipio.NombreMunicipio</td>
+        }
     </tr>
 </table>
 <a class="btn btn-primary" asp-page="./IndexEquipo">Volver</a>
