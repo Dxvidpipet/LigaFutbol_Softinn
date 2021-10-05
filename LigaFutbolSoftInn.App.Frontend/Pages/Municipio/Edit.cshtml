@@ -1,0 +1,18 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.EditModel
+@{
+}
+<h1>Editar Municipio</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="municipio.IdMunicipio"></label>
+        <input asp-for="municipio.IdMunicipio" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+        <label asp-for="municipio.NombreMunicipio"></label>
+        <input asp-for="municipio.NombreMunicipio" class="form-control">
+        <span asp-validation-for="municipio.NombreMunicipio" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Editar Municipio</button>
+</form>
+<a class="btn btn-secondary" asp-page="./Index">Volver</a>

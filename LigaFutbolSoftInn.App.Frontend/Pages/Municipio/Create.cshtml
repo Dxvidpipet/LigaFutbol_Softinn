@@ -1,0 +1,14 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.CreateModel
+@{
+}
+<h1>Nuevo Municipio</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="municipio.NombreMunicipio"></label>
+        <input asp-for="municipio.NombreMunicipio" class="form-control">
+        <span asp-validation-for="municipio.NombreMunicipio" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Crear Municipio</button>
+</form>
+<a class="btn btn-secondary" asp-page="./Index">Volver</a>

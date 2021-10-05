@@ -39,12 +39,12 @@ namespace LigaFutbolSoftInn.App.Consola
             //UpdateArbitro();
             //ReadArbitro(1);
             //DeleteArbitro(1);
-            //CreateEquipo();
+            CreateEquipo();
             //UpdateEquipo();
             //ReadEquipo(1);
             //DeleteEquipo(1);
             //AsignarMunicipio(2, 2);
-            CreateEstadio();
+            //CreateEstadio();
             //UpdateEstadio();
             //ReadEstadio(1);
             //DeleteEstadio(1);
@@ -199,7 +199,7 @@ namespace LigaFutbolSoftInn.App.Consola
         {
             var equipo = new Equipo
             {
-                NombreEquipo = "Deportivo Tapitas"
+                NombreEquipo = "Programadorsitos FC"
             };
             _repoEquipo.CreateEquipo(equipo);
         }
