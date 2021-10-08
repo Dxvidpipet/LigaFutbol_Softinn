@@ -1,0 +1,23 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.EditEstadioModel
+@{
+}
+<h1>Editar estadio</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="estadio.IdEstadio"></label>
+        <input asp-for="estadio.IdEstadio" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+        <label asp-for="estadio.NombreEstadio"></label>
+        <input asp-for="estadio.NombreEstadio" class="form-control">
+        <span asp-validation-for="estadio.NombreEstadio" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="estadio.DireccionEstadio"></label>
+        <input asp-for="estadio.DireccionEstadio" class="form-control">
+        <span asp-validation-for="estadio.DireccionEstadio" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Editar Estadio</button>
+</form>
+<a class="btn btn-secondary" asp-page="./IndexEstadio">Volver</a>

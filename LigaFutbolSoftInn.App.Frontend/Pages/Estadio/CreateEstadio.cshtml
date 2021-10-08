@@ -1,0 +1,21 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.CreateEstadioModel
+@{
+}
+
+
+<h1>Nuevo estadio</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="estadio.NombreEstadio"></label>
+        <input asp-for="estadio.NombreEstadio" class="form-control">
+        <span asp-validation-for="estadio.NombreEstadio" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="estadio.DireccionEstadio"></label>
+        <input asp-for="estadio.DireccionEstadio" class="form-control">
+        <span asp-validation-for="estadio.DireccionEstadio" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Crear estadio</button>
+</form>
+<a class="btn btn-secondary" asp-page="./IndexEstadio">Volver</a>
