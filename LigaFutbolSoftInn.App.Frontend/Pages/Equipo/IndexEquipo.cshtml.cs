@@ -19,6 +19,8 @@ namespace LigaFutbolSoftInn.App.Frontend.Pages
         public void OnGet()
         {
             equipos = _repoEquipo.GetAllEquipos();
+            
+            //Console.WriteLine(equipos.First().Municipio.NombreMunicipio);
         }
     }
 }

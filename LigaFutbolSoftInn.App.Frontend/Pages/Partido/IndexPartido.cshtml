@@ -2,6 +2,7 @@
 @model LigaFutbolSoftInn.App.Frontend.Pages.IndexPartidoModel
 @{
 }
+<a class="btn btn-primary" asp-page="./CreatePartido">Nuevo Partido</a>
 <h1>Listado de Partidos</h1>
 <table class="table">
     <thead>
@@ -29,12 +30,12 @@
                 <td>@partido.MarcadorVisitante</td>
                 @*<td>@partido.Estadio</td>
                 <td>@partido.Arbitro</td>*@
-            </tr>
+            
              <td>
-                    <a class="btn btn-primary" asp-page="./DetailsPartido" asp-route-id="@partido.IdPartido">
-                        Detalle
-                    </a>
+                    <a class="btn btn-primary" asp-page="./DetailsPartido" asp-route-id="@partido.IdPartido">Detalle</a>
+                    <a class="btn btn-primary" asp-page="./EditPartido" asp-route-id="@partido.IdPartido">Editar</a>
                 </td>
+                </tr>
         }
     </tbody>
 </table>
