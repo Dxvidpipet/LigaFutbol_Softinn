@@ -3,7 +3,7 @@
 @{
 }
 <h1>Listado Directores Tecnicos</h1>
-
+<a class="btn btn-success" asp-page="./CreateDirTecnicos">Nuevo Director Técnico</a>
 <table class="table">
     <thead>
         <tr>
@@ -22,9 +22,10 @@
                 <td>@dirTecnico.TelefonoDirTecnico</td>
                 <td>@dirTecnico.Equipo</td>
                 <td>
-                    <a class="btn btn-primary" asp-page="./DetailsDirTecnicos" asp-route-id="@dirTecnico.IdDirTecnico">
+                    <a class="btn btn-info" asp-page="./DetailsDirTecnicos" asp-route-id="@dirTecnico.IdDirTecnico">
                         Detalle
                     </a>
+                    <a class="btn btn-dark" asp-page="./EditDirTecnicos" asp-route-id="@dirTecnico.IdDirTecnico">Editar</a>
                 </td>
             </tr>
         }

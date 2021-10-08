@@ -1,0 +1,33 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Pages.EditDirTecnicosModel
+@using LigaFutbolSoftInn.App.Dominio
+@{
+}
+<h1>Editar Director Técnico</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="dirTecnico.IdDirTecnico"></label>
+        <input asp-for="dirTecnico.IdDirTecnico" class="form-control" readonly>
+    </div>
+    <div class = "form-group">
+        <label asp-for="dirTecnico.NombreDirTecnico"></label>
+        <input asp-for="dirTecnico.NombreDirTecnico" class="form-control">
+        <span asp-validation-for="dirTecnico.NombreDirTecnico" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="dirTecnico.DocumentoDirTecnico"></label>
+        <input asp-for="dirTecnico.DocumentoDirTecnico" class="form-control">
+        <span asp-validation-for="dirTecnico.DocumentoDirTecnico" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="dirTecnico.TelefonoDirTecnico"></label>
+        <input asp-for="dirTecnico.TelefonoDirTecnico" class="form-control">
+        <span asp-validation-for="dirTecnico.TelefonoDirTecnico" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="dirTecnico.Equipo"></label>
+        <input asp-for="dirTecnico.Equipo" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Editar Director Técnicos</button>
+</form>
+<a class="btn btn-secondary" asp-page = "./IndexDirTecnicos">Volver</a>

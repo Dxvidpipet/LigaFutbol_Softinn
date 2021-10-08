@@ -1,0 +1,29 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Pages.CreateDirTecnicosModel
+@using LigaFutbolSoftInn.App.Dominio
+@{
+}
+<h1>Nuevo Director Técnico</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="dirTecnico.NombreDirTecnico"></label>
+        <input asp-for="dirTecnico.NombreDirTecnico" class="form-control">
+        <span asp-validation-for="dirTecnico.NombreDirTecnico" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="dirTecnico.DocumentoDirTecnico"></label>
+        <input asp-for="dirTecnico.DocumentoDirTecnico" class="form-control">
+        <span asp-validation-for="dirTecnico.DocumentoDirTecnico" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="dirTecnico.TelefonoDirTecnico"></label>
+        <input asp-for="dirTecnico.TelefonoDirTecnico" class="form-control">
+        <span asp-validation-for="dirTecnico.TelefonoDirTecnico" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="dirTecnico.Equipo"></label>
+        <input asp-for="dirTecnico.Equipo" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Crear Director Técnico</button>
+</form>
+<a class="btn btn-secondary" asp-page = "./IndexDirTecnico">Volver</a>
