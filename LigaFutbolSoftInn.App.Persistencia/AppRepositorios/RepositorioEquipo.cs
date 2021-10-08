@@ -41,6 +41,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         }
 
@@ -78,6 +79,8 @@ namespace LigaFutbolSoftInn.App.Persistencia
             }
             return null;
 >>>>>>> alexander2
+=======
+>>>>>>> 9d5046e88f27a3e023fec3a467a1a2fcc36cbdf7
 =======
 >>>>>>> 9d5046e88f27a3e023fec3a467a1a2fcc36cbdf7
 =======
