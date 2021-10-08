@@ -6,10 +6,13 @@
     <title>@ViewData["Title"] - LigaFutbolSoftInn</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <body bgcolor="#e83e8c"></body>
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">LigaFutbolSoftInn</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -19,40 +22,40 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Municipio/Index">Municipios</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Municipio/Index">Municipios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Equipo/IndexEquipo">Equipo</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Equipo/IndexEquipo">Equipo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Partido/IndexPartido">Partido</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Partido/IndexPartido">Partido</a>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/DirTecnicos/IndexDirTecnicos">Director Técnico</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/DirTecnicos/IndexDirTecnicos">Director Técnico</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Estadio/IndexEstadio">Estadio</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Estadio/IndexEstadio">Estadio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Jugador/Index">Jugador</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Jugador/Index">Jugador</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Novedad/Index">Novedad</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Novedad/Index">Novedad</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Arbitros/IndexArbitro">Arbitro</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Arbitros/IndexArbitro">Arbitro</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

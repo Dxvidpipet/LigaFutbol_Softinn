@@ -1,0 +1,58 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.EditPartidoModel
+@{
+}
+<h1>Editar Partidos</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="idPartido">Equipo</label>
+        <input type="text" id="idPartido" name="idPartido" class="form-control" value="@Model.partido.IdPartido" readonly>
+    </div>
+    <div class="form-group">
+        <label asp-for="partido.FechaPartido"></label>
+        <input asp-for="partido.FechaPartido" class="form-control">
+        <span asp-validation-for="partido.FechaPartido" class="text-danger"></span>
+        <label for="partido.FechaPartido">Nombre Equipo Local</label>
+        <select id="idEquipo" name="idEquipo" class="form-control">
+         <option value="">@Model.partido.NombreEquipoLocal.NombreEquipo</option>   
+            @foreach (var equipo in Model.equiposLocal)
+            {
+                <option value="@equipo.IdEquipo">@equipo.NombreEquipo</option>
+            }
+        </select>
+        <label for="idEquipoV">Nombre Equipo Visitante</label>
+        <select id="idEquipoV" name="idEquipoV" class="form-control">
+            <option value="">@Model.partido.NombreEquipoVisitante.NombreEquipo</option>
+            @foreach (var equipo in Model.equiposVisitante)
+            {
+                <option value="@equipo.IdEquipo">@equipo.NombreEquipo</option>
+            }
+        </select>
+         <label asp-for="partido.MarcadorLocal"></label>
+        <input asp-for="partido.MarcadorLocal" class="form-control">
+        <span asp-validation-for="partido.MarcadorLocal" class="text-danger"></span>
+        
+         <label asp-for="partido.MarcadorVisitante"></label>
+        <input asp-for="partido.MarcadorVisitante" class="form-control">
+        <span asp-validation-for="partido.MarcadorVisitante" class="text-danger"></span>
+        <label for="idArbitro">Arbitro</label>
+        <select id="idArbitro" name="idArbitro" class="form-control">
+            <option value="">@Model.partido.Arbitro.NombreArbitro</option>
+            @foreach (var arbitro in Model.arbitros)
+            {
+                <option value="@arbitro.IdArbitro">@arbitro.NombreArbitro</option>
+            }
+        </select>
+        <label for="idEstadio">Estadio</label>
+        <select id="idEstadio" name="idEstadio" class="form-control">
+            <option value="">@Model.partido.Estadio.NombreEstadio</option>
+            @foreach (var estadio in Model.estadios)
+            {
+                <option value="@estadio.IdEstadio">@estadio.NombreEstadio</option>
+            }
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Editar Partido</button>
+</form>
+<a class="btn btn-secondary" asp-page="./IndexPartido">Volver</a>
