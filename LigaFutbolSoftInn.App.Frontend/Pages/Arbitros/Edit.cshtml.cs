@@ -4,18 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using LigaFutbolSoftInn.App.Persistencia;
 using LigaFutbolSoftInn.App.Dominio;
+using LigaFutbolSoftInn.App.Persistencia;
 
 namespace LigaFutbolSoftInn.App.Frontend.Pages
 {
-    public class DetailsArbitrosModel : PageModel
+    public class EditModelArbitro : PageModel
     {
         private readonly IRepositorioArbitro _repoArbitro;
-        public Arbitro arbitro {get; set;}
-        public DetailsArbitrosModel(IRepositorioArbitro repositorioArbitro)
+        public Arbitro arbitro {get;set;}
+        public EditModelArbitro (IRepositorioArbitro repoPaciente)
         {
-            _repoArbitro = repositorioArbitro;
+            _repoArbitro = repoPaciente;
         }
         public IActionResult OnGet(int id)
         {
@@ -29,6 +29,10 @@ namespace LigaFutbolSoftInn.App.Frontend.Pages
                 return Page();
             }
         }
-        
+        public IActionResult OnPost(Arbitro arbitro)
+        {
+            _repoArbitro.UpdateArbitro(arbitro);
+            return RedirectToPage("IndexArbitro");
+        }
     }
 }

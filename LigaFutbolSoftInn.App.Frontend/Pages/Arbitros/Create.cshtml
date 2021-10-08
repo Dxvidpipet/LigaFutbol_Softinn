@@ -1,0 +1,29 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.CreateModelArbitro
+@using LigaFutbolSoftInn.App.Dominio
+@{
+}
+<h1>Nuevo Árbitro</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="arbitro.NombreArbitro"></label>
+        <input asp-for="arbitro.NombreArbitro" class="form-control">
+        <span asp-validation-for="arbitro.NombreArbitro" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="arbitro.DocumentoArbitro"></label>
+        <input asp-for="arbitro.DocumentoArbitro" class="form-control">
+        <span asp-validation-for="arbitro.DocumentoArbitro" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="arbitro.TelefonoArbitro"></label>
+        <input asp-for="arbitro.TelefonoArbitro" class="form-control">
+        <span asp-validation-for="arbitro.TelefonoArbitro" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="arbitro.ColegioArbitro"></label>
+        <input asp-for="arbitro.ColegioArbitro" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Crear Arbitro</button>
+</form>
+<a class="btn btn-secondary" asp-page = "./IndexArbitro">Volver</a>
