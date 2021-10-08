@@ -48,7 +48,7 @@ namespace LigaFutbolSoftInn.App.Consola
             //UpdateEstadio();
             //ReadEstadio(1);
             //DeleteEstadio(1);
-            //AsignarEstadioMunicipio(2, 2);
+            AsignarEstadioMunicipio(1, 1);
             //CreateDirTecnico();
             //UpdateDirTecnico();
             //ReadDirTecnico(1);

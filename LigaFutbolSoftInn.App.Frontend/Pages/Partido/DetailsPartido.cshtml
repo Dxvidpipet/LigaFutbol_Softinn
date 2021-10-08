@@ -12,6 +12,27 @@
         <th scope="col">Fecha Partido</th>
         <td>@Model.partido.FechaPartido</td>
     </tr>
+    <th scope="col">Nombre Equipo Local</th>
+        @if (Model.partido.NombreEquipoLocal == null)
+        {
+            
+               <td scope="col">Pendiente</td>  
+        }
+        else
+        {
+            <td>@Model.partido.NombreEquipoLocal.NombreEquipo</td>
+        }
+    </tr>
+     <th scope="col">Nombre Equipo Visitante</th>
+        @if (Model.partido.NombreEquipoVisitante == null)
+        {
+             <td scope="col">Pendiente</td>  
+        }
+        else
+        {
+            <td>@Model.partido.NombreEquipoVisitante.NombreEquipo</td>
+        }
+    </tr>
     @*<tr>
         <th scope="col">Nombre Equipo Local Id Equipo</th>
         <td>@Model.partido.NombreEquipoLocal</td>
@@ -27,6 +48,28 @@
     <tr>
         <th scope="col">Marcador Visitante</th>
         <td>@Model.partido.MarcadorVisitante</td>
+    </tr>
+
+     <th scope="col">Estadio</th>
+        @if (Model.partido.Estadio == null)
+        {
+             <td scope="col">Pendiente</td>  
+        }
+        else
+        {
+            <td>@Model.partido.Estadio.NombreEstadio</td>
+        }
+    </tr>
+
+    <th scope="col">Arbitro</th>
+        @if (Model.partido.Arbitro == null)
+        {
+            <td scope="col">Pendiente</td>  
+        }
+        else
+        {
+            <td>@Model.partido.Arbitro.NombreArbitro</td>
+        }
     </tr>
     @*<tr>
         <th scope="col">Estadio Id Estadio</th>

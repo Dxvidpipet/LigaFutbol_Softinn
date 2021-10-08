@@ -37,20 +37,11 @@ namespace LigaFutbolSoftInn.App.Persistencia
                         .Include(p => p.Municipio)
                         .FirstOrDefault();
             return equipo;
+<<<<<<< HEAD
+=======
         }
 
-        Equipo IRepositorioEquipo.UpdateEquipo(Equipo equipo)
-        {
-            var equipoEncontrado = _appContext.Equipos.FirstOrDefault(m => m.IdEquipo == equipo.IdEquipo);
-            if (equipoEncontrado != null)
-            {
-                equipoEncontrado.NombreEquipo = equipo.NombreEquipo;
-
-                _appContext.SaveChanges();
-            }
-            
-            return equipoEncontrado;
-        }
+        
 
         string IRepositorioEquipo.DeleteEquipo(int idEquipo)
         {
@@ -61,7 +52,66 @@ namespace LigaFutbolSoftInn.App.Persistencia
             _appContext.SaveChanges();
             return "Equipo eliminado!";
         }
-       
+
+
+        Municipio IRepositorioEquipo.UpdateEquipo(Equipo equipo,int idEquipo, int idMunicipio)
+        {
+
+            var equipoEncontrado = _appContext.Equipos.Find(idEquipo);
+            
+            if (equipoEncontrado != null)
+            { 
+                var municipioEncontrado = _appContext.Municipios.Find(idMunicipio);
+                if (municipioEncontrado != null)
+                { 
+                    
+                    equipoEncontrado.NombreEquipo =equipo.NombreEquipo;
+                  
+                    equipoEncontrado.Municipio = municipioEncontrado;
+                  
+                    _appContext.SaveChanges();
+                }
+                return municipioEncontrado;
+            }
+            return null;
+>>>>>>> alexander2
+        }
+
+
+
+
+       /*Equipo IRepositorioEquipo.UpdateEquipo(Equipo equipo)
+        {
+            var equipoEncontrado = _appContext.Equipos.FirstOrDefault(m => m.IdEquipo == equipo.IdEquipo);
+            if (equipoEncontrado != null)
+            {
+                equipoEncontrado.NombreEquipo = equipo.NombreEquipo;
+                equipoEncontrado.Municipio = equipo.Municipio;
+                _appContext.SaveChanges();
+            }
+            
+            return equipoEncontrado;
+        }*/
+
+        Municipio IRepositorioEquipo.AsignarMunicipios(Equipo equipo, int idMunicipio)
+        {
+            
+             var equipoEncontrado = _appContext.Equipos.FirstOrDefault(m => m.NombreEquipo == equipo.NombreEquipo);
+            
+          
+            if (equipoEncontrado != null)
+            { 
+                var municipioEncontrado = _appContext.Municipios.Find(idMunicipio);
+                if (municipioEncontrado != null)
+                { 
+                   
+                    equipoEncontrado.Municipio = municipioEncontrado;
+                    _appContext.SaveChanges();
+                }
+                return municipioEncontrado;
+            }
+            return null;
+        }
 
         Municipio IRepositorioEquipo.AsignarMunicipio(int idEquipo, int idMunicipio)
         {
@@ -71,6 +121,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
                 var municipioEncontrado = _appContext.Municipios.Find(idMunicipio);
                 if (municipioEncontrado != null)
                 { 
+                   
                     equipoEncontrado.Municipio = municipioEncontrado;
                     _appContext.SaveChanges();
                 }
@@ -80,4 +131,9 @@ namespace LigaFutbolSoftInn.App.Persistencia
         }
 
     }
+
+
+
+    
+    
 }

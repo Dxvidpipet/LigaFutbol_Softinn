@@ -34,6 +34,8 @@ namespace LigaFutbolSoftInn.App.Persistencia
         {
             var jugadorEncontrado = _appContext.Jugadores.FirstOrDefault(m => m.IdJugador == idJugador);
             return jugadorEncontrado;
+
+          
         }
 
         Jugador IRepositorioJugador.UpdateJugador(Jugador jugador)
