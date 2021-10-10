@@ -1,8 +1,9 @@
-﻿@page
+@page
 @model LigaFutbolSoftInn.App.Frontend.Pages.IndexNovedadModel
 @{
 }
 <h1>Listado de Novedades</h1>
+<a class="btn btn-success" asp-page="./CreateNovedad">Nueva Novedad</a>
 <table class="table">
     <thead>
         <tr>
@@ -23,9 +24,8 @@
                 <td>@novedad.Jugador</td>
                 <td>@novedad.Partido</td>
                 <td>
-                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@novedad.IdNovedad">
-                        Detalle
-                    </a>
+                    <a class="btn btn-info" asp-page="./Details" asp-route-id="@novedad.IdNovedad">Detalle</a>
+                    <a class="btn btn-dark" asp-page="./EditNovedad" asp-route-id="@novedad.IdNovedad">Editar</a>
                 </td>
             </tr>
         }

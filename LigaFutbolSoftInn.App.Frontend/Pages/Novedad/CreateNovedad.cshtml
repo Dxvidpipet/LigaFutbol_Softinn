@@ -1,0 +1,24 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.CreateNovedadModel
+@{
+}
+<h1>Nueva Novedad</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="novedad.IdNovedad"></label>
+        <input asp-for="novedad.IdNovedad" class="form-control">
+        <span asp-validation-for="novedad.IdNovedad" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="novedad.TipoNovedad"></label>
+        <input asp-for="novedad.TipoNovedad" class="form-control">
+        <span asp-validation-for="novedad.TipoNovedad" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="novedad.MinutoPartidoNovedad"></label>
+        <input asp-for="novedad.MinutoPartidoNovedad" class="form-control">
+        <span asp-validation-for="novedad.MinutoPartidoNovedad" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Crear Novedad</button>
+</form>
+<a class="btn btn-secondary" asp-page = "./Index">Volver</a>
