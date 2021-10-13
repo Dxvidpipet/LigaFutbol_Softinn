@@ -11,16 +11,63 @@ namespace LigaFutbolSoftInn.App.Frontend.Pages
     public class IndexEquipoModel : PageModel
     {
      private readonly IRepositorioEquipo _repoEquipo;
+     private readonly IRepositorioMunicipio _repoMunicipio;
         public IEnumerable<Equipo> equipos {get; set;}
-        public IndexEquipoModel(IRepositorioEquipo repoEquipo)
+       //public Equipo equipo {get; set;}
+        public string bActual {get; set;}
+        public string gActual  {get; set;}
+
+        public IEnumerable<Municipio> municipios { get; set; }
+
+        public IndexEquipoModel(IRepositorioEquipo repoEquipo,IRepositorioMunicipio repoMunicipio)
         {
             _repoEquipo= repoEquipo;
+            _repoMunicipio= repoMunicipio;
         }
-        public void OnGet()
+        public void OnGet(string b, string g)
         {
+            string busqueda;
+            municipios = _repoMunicipio.GetAllMunicipios();
             equipos = _repoEquipo.GetAllEquipos();
+                 if(String.IsNullOrEmpty(g))
+                     {
+                        gActual="";
+                        //equipos = _repoEquipo.GetAllEquipos();
+                        //
+                        if(String.IsNullOrEmpty(b))
+                         {
+                           bActual="";  
+                           gActual=""; 
+                         }
+                         else   
+                         {
+                        bActual=b;
+                        busqueda="";
+                        equipos=_repoEquipo.SearchEquipoMuni(b,g,busqueda);
+
+                         }
+                        //equipos=_repoEquipo.SearchEquipo(b);
+                         //equipos = _repoEquipo.ReadEquipo(id);
+                     }
+                 else
+                    {
+                        gActual=g;
+                        bActual=b;
+                        busqueda="Equipo";
+                        if(String.IsNullOrEmpty(b))
+                         {
+                        b="";
+                         }
+                        equipos=_repoEquipo.SearchEquipoMuni(b,g,busqueda);
+                    }
+
+            }
+
+            
+
+           
             
             //Console.WriteLine(equipos.First().Municipio.NombreMunicipio);
-        }
+        
     }
 }

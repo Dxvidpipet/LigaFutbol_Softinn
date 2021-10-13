@@ -21,8 +21,28 @@ namespace LigaFutbolSoftInn.App.Persistencia
         private readonly AppContext _appContext = new AppContext();
         IEnumerable<Equipo> IRepositorioEquipo.GetAllEquipos()
         {
-            return _appContext.Equipos;
+            return _appContext.Equipos
+            .Include(p => p.Municipio);
         }
+
+       
+         IEnumerable<Equipo> IRepositorioEquipo.SearchEquipoMuni(string nombreequipo,string nombremuni,string busqueda)
+        {
+           if(String.IsNullOrEmpty(busqueda))
+            {
+                return _appContext.Equipos.Where(e =>e.NombreEquipo.Contains(nombreequipo));  
+            }
+            else
+            {
+                return _appContext.Equipos.Where(e => e.Municipio.NombreMunicipio == nombremuni && e.NombreEquipo.Contains(nombreequipo));
+                     
+            }
+            // .Where(e => e.Equipo == (Equipo)nombre);
+             //.Include(p => p.Municipio.Contains(nombre));
+        }
+
+
+
         Equipo IRepositorioEquipo.CreateEquipo(Equipo equipo)
         {
             var equipoAdicionado = _appContext.Equipos.Add(equipo);

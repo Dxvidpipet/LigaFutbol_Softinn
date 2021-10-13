@@ -16,5 +16,6 @@ namespace LigaFutbolSoftInn.App.Persistencia
         Equipo AsignarEquipoVisitante(int idPartido, int idEquipo);
         Arbitro AsignarArbitro(int idPartido, int idArbitro);
         Estadio AsignarEstadio(int idPartido, int idEstadio);
+        IEnumerable<Partido> SearchPartidoAll(string nombreall,int busqueda);
     }
 }

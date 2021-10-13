@@ -2,6 +2,73 @@
 @model LigaFutbolSoftInn.App.Frontend.Pages.IndexPartidoModel
 @{
 }
+<form method="get">
+    <div class="form-group">
+        <label for="g">Filtrar por:</label>
+        <select name="g" id="g" asp-for="@Model.gActual" class="form-control">
+            <option value="0">Mostrar Todos</option>
+            <option value="1">Nombre Equipo Local</option>
+            <option value="2">Nombre Equipo Visitante</option>
+            <option value="3">Nombre Estadio</option>
+            <option value="4">Nombre Arbitro</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+    <div class="form-group">
+        <label for="b">@Model.NombreFiltro</label>
+        <select name="b" id="b" asp-for="@Model.bActual" class="form-control">
+
+            @switch (@Model.gActual)
+            {
+                case 0:
+                    <option value="">Mostrar Todos</option>
+
+                    break;
+
+                case 1:
+                   <option value="">Mostrar Todos</option>
+                    @foreach (var equipolocal in Model.equiposLocal)
+                    {
+
+                        <option value="@equipolocal.NombreEquipo">@equipolocal.NombreEquipo</option>
+                    }
+                    break;
+                case 2:
+                    <option value="">Mostrar Todos</option>
+                    @foreach (var equipovisi in Model.equiposVisitante)
+                    {
+
+                        <option value="@equipovisi.NombreEquipo">@equipovisi.NombreEquipo</option>
+                    }
+
+                    break;
+                case 3:
+                    <option value="">Mostrar Todos</option>
+                    @foreach (var estadio in Model.estadios)
+                    {
+
+                        <option value="@estadio.NombreEstadio">@estadio.NombreEstadio</option>
+                    }
+                    break;
+                case 4:
+                    <option value="">Mostrar Todos</option>
+                    @foreach (var arbitro in Model.arbitros)
+                    {
+
+                        <option value="@arbitro.NombreArbitro">@arbitro.NombreArbitro</option>
+                    }
+                    break;
+
+
+            }
+
+
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+
 <a class="btn btn-primary" asp-page="./CreatePartido">Nuevo Partido</a>
 <h1>Listado de Partidos</h1>
 <table class="table">
@@ -9,13 +76,13 @@
         <tr>
             <th scope="col">Id Partido</th>
             <th scope="col">Fecha Partido</th>
-            @*<th scope="col">Nombre Equipo Local Id Equipo</th>
-            <th scope="col">Nombre Equipo Visitante Id Equipo</th>*@
+            <th scope="col">Nombre Equipo Local</th>
+            <th scope="col">Nombre Equipo Visitante</th>
             <th scope="col">Marcador Local</th>
             <th scope="col">Marcador Visitante</th>
-            @*<th scope="col">Estadio Id Estadio</th>
-            <th scope="col">Arbitro Id Arbitro</th>*@
-           
+            <th scope="col">Nombre Estadio</th>
+            <th scope="col">Nombre Arbitro</th>
+
         </tr>
     </thead>
     <tbody>
@@ -24,18 +91,46 @@
             <tr>
                 <td>@partido.IdPartido</td>
                 <td>@partido.FechaPartido</td>
-                @*<td>@partido.NombreEquipoLocal</td>
-                <td>@partido.NombreEquipoVisitante</td>*@
+                @if (partido.NombreEquipoLocal == null)
+                {
+                    <td scope="col">Pendiente</td>
+                }
+                else
+                {
+                    <td>@partido.NombreEquipoLocal.NombreEquipo</td>
+                }
+                @if (partido.NombreEquipoVisitante == null)
+                {
+                    <td scope="col">Pendiente</td>
+                }
+                else
+                {
+                    <td>@partido.NombreEquipoVisitante.NombreEquipo</td>
+                }
                 <td>@partido.MarcadorLocal</td>
                 <td>@partido.MarcadorVisitante</td>
-                @*<td>@partido.Estadio</td>
-                <td>@partido.Arbitro</td>*@
-            
-             <td>
+                @if (partido.Estadio == null)
+                {
+                    <td scope="col">Pendiente</td>
+                }
+                else
+                {
+                    <td>@partido.Estadio.NombreEstadio</td>
+                }
+                @if (partido.Arbitro == null)
+                {
+                    <td scope="col">Pendiente</td>
+                }
+                else
+                {
+                    <td>@partido.Arbitro.NombreArbitro</td>
+                }
+
+                <td>
                     <a class="btn btn-primary" asp-page="./DetailsPartido" asp-route-id="@partido.IdPartido">Detalle</a>
                     <a class="btn btn-primary" asp-page="./EditPartido" asp-route-id="@partido.IdPartido">Editar</a>
                 </td>
-                </tr>
+            </tr>
         }
     </tbody>
 </table>

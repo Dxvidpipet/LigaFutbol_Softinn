@@ -12,15 +12,16 @@
      <div class="form-group">  
         <label for="idMunicipio">Municipio</label>
         <select id="idMunicipio" name="idMunicipio" class="form-control">
-            <option value="idMunicipio"></option>
+        <option value="idMunicipio"></option>
             @foreach (var municipio in Model.municipios)
             {
                 <option value="@municipio.IdMunicipio">@municipio.NombreMunicipio</option>
             }
         </select>
         <span asp-validation-for="equipo.Municipio" class="text-danger"></span>
+    </div>
     
     <button type="submit" class="btn btn-primary">Crear Equipo</button>
-    </div>
+    
 </form>
 <a class="btn btn-secondary" asp-page="./IndexEquipo">Volver</a>

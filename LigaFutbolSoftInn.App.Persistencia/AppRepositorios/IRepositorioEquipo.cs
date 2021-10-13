@@ -14,5 +14,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
         Municipio AsignarMunicipio(int idEquipo, int idMunicipio);
         Municipio AsignarMunicipios(Equipo equipo, int idMunicipio);
         Municipio UpdateEquipo(Equipo equipo,int idEquipo, int idMunicipio);
+        //IEnumerable<Equipo> GetEquipoFiltro(int filtro);
+        IEnumerable<Equipo> SearchEquipoMuni(string nombreequipo,string nombremuni,string busqueda);
     }
 }

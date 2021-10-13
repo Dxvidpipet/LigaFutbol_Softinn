@@ -2,6 +2,27 @@
 @model LigaFutbolSoftInn.App.Frontend.Pages.IndexEquipoModel
 @{
 }
+
+<form method="get">
+    <div class="form-group">
+        <label for="g">Filtrar por Municipio</label>
+        <select name="g" id="g" asp-for="@Model.gActual"  class="form-control">
+        <option value="">Mostrar Todos</option>
+            @foreach (var municipio in Model.municipios)
+            {
+                <option value="@municipio.NombreMunicipio">@municipio.NombreMunicipio</option>
+            }    
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+        <div class="form-group">
+        <label for="b">Buscar por Nombre de Equipo </label>
+        <input name="b" id="b" asp-for="@Model.bActual"  class="form-control"> 
+        </input>
+    </div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
 <a class="btn btn-primary" asp-page="./CreateEquipo">Nuevo Equipo</a>
 <h1>Listado Equipos</h1>
 <table class="table">
@@ -9,6 +30,7 @@
         <tr>
             <th scope="col">Id Equipo</th>
             <th scope="col">Nombre Equipo</th>
+            <th scope="col">Municipio</th>
         </tr>
     </thead>
     <tbody>
@@ -17,16 +39,24 @@
             <tr>
                 <td>@equipo.IdEquipo</td>
                 <td>@equipo.NombreEquipo</td>
-
-               
+                @if (equipo.Municipio == null)
+                {
+                    <td>
+                        <a class="btn btn-primary" asp-page="./AddMunicipio" asp-route-id="@equipo.IdEquipo">Asignar Municipio</a>
+                    </td>
+                }
+                else
+                {
+                    <td>@equipo.Municipio.NombreMunicipio</td>
+                }
                 <td>
-                    <a class="btn btn-primary" asp-page="./DetailsEquipo" asp-route-id="@equipo.IdEquipo"> Detalle</a>  
-                    <a class="btn btn-secondary" asp-page="./EditEquipo" asp-route-id="@equipo.IdEquipo">Editar</a> 
+                    <a class="btn btn-primary" asp-page="./DetailsEquipo" asp-route-id="@equipo.IdEquipo"> Detalle</a>
+                    <a class="btn btn-secondary" asp-page="./EditEquipo" asp-route-id="@equipo.IdEquipo">Editar</a>
 
 
                 </td>
             </tr>
-                    
+
         }
     </tbody>
 </table>

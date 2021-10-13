@@ -21,8 +21,46 @@ namespace LigaFutbolSoftInn.App.Persistencia
         private readonly AppContext _appContext = new AppContext();
         IEnumerable<Partido> IRepositorioPartido.GetAllPartidos()
         {
-            return _appContext.Partidos;
+            return _appContext.Partidos
+            .Include(p => p.NombreEquipoLocal)
+            .Include(p => p.NombreEquipoVisitante)
+            .Include(p => p.Arbitro)
+            .Include(p => p.Estadio);
         }
+
+    IEnumerable<Partido> IRepositorioPartido.SearchPartidoAll(string nombreall,int busqueda)
+        {
+
+          
+             switch (busqueda)
+            {
+                case 0:
+                    return _appContext.Partidos; 
+                    break;
+                case 1:
+                     return _appContext.Partidos.Where(e => e.NombreEquipoLocal.NombreEquipo == nombreall );
+                    break;
+                case 2:
+                   return _appContext.Partidos.Where(e => e.NombreEquipoVisitante.NombreEquipo == nombreall);
+                   break;
+                case 3:
+                    return _appContext.Partidos.Where(e => e.Estadio.NombreEstadio == nombreall );
+
+                    break;
+                case 4:
+                    return _appContext.Partidos.Where(e => e.Arbitro.NombreArbitro == nombreall);
+
+                    break;
+              default:
+               return _appContext.Partidos;
+            break;
+
+            }    
+         
+            // .Where(e => e.Equipo == (Equipo)nombre);
+             //.Include(p => p.Municipio.Contains(nombre));
+        }
+
 
         Partido IRepositorioPartido.ReadPartido(int IdPartido)
         {
