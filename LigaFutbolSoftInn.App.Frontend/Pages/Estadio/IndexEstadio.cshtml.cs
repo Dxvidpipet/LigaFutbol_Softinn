@@ -1,3 +1,4 @@
+using System.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,24 @@ namespace LigaFutbolSoftInn.App.Frontend.Pages
     {
         private readonly IRepositorioEstadio _repoEstadio;
         public IEnumerable<Estadio> estadios {get; set;}
+        public string bActual {get; set;}
+
         public IndexEstadioModel(IRepositorioEstadio repoEstadio)
         {
             _repoEstadio= repoEstadio;
         }
-        public void OnGet()
+        public void OnGet(string b)
         {
-            estadios = _repoEstadio.GetAllEstadios();
+            if (String.IsNullOrEmpty(b))
+            {
+                bActual = "";
+                estadios = _repoEstadio.GetAllEstadios();
+            }
+            else
+            {
+                bActual = b;
+                estadios = _repoEstadio.SearchEstadios(b);
+            }
             
             //Console.WriteLine(estadios.First().Municipio.NombreMunicipio);
         }

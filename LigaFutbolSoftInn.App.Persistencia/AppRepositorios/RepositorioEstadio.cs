@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.AccessControl;
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using LigaFutbolSoftInn.App.Dominio;
 using LigaFutbolSoftInn.App.Persistencia;
 
@@ -32,8 +34,12 @@ namespace LigaFutbolSoftInn.App.Persistencia
 
         Estadio IRepositorioEstadio.ReadEstadio(int idEstadio)
         {
-            var estadioEncontrado = _appContext.Estadios.FirstOrDefault(m => m.IdEstadio == idEstadio);
-            return estadioEncontrado;
+            var estadio = _appContext.Estadios
+                        .Where(e => e.IdEstadio == idEstadio)
+                        .Include(m => m.Municipio)
+                        .FirstOrDefault();
+
+            return estadio;
         }
 
         Estadio IRepositorioEstadio.UpdateEstadio(Estadio estadio)
@@ -63,10 +69,10 @@ namespace LigaFutbolSoftInn.App.Persistencia
 
         Municipio IRepositorioEstadio.AsignarEstadioMunicipio(int idEstadio, int idMunicipio)
         {
-            var estadioEncontrado = _appContext.Estadios.FirstOrDefault(p => p.IdEstadio == idEstadio);
+            var estadioEncontrado = _appContext.Estadios.Find(idEstadio);
             if (estadioEncontrado != null)
             { 
-                var municipioEncontrado = _appContext.Municipios.FirstOrDefault(e => e.IdMunicipio == idMunicipio);
+                var municipioEncontrado = _appContext.Municipios.Find(idMunicipio);
                 if (municipioEncontrado != null)
                 { 
                     estadioEncontrado.Municipio = municipioEncontrado;
@@ -77,5 +83,9 @@ namespace LigaFutbolSoftInn.App.Persistencia
             return null;
         }
 
+        IEnumerable<Estadio> IRepositorioEstadio.SearchEstadios(string nombre)
+        {
+            return _appContext.Estadios.Where(e => e.NombreEstadio.Contains(nombre));
+        }
     }
 }

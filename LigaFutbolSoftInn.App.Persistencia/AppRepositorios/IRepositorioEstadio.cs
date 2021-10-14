@@ -8,7 +8,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
     {
         Estadio CreateEstadio(Estadio estadio);
         IEnumerable<Estadio> GetAllEstadios();
-
+        IEnumerable<Estadio> SearchEstadios(string nombre);
         Estadio ReadEstadio(int idEstadio);
         Estadio UpdateEstadio(Estadio estadio);
         string DeleteEstadio(int idEstadio);
