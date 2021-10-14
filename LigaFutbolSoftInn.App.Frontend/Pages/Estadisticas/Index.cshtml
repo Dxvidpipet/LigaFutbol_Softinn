@@ -1,0 +1,89 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Frontend.Pages.IndexEstadisticasModel
+@{
+}
+
+<h1>Estadisticas de Equipos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Equipo</th>
+            <th scope="col">Partidos Jugados</th>
+            <th scope="col">Partidos Ganados</th>
+            <th scope="col">Partidos Empatados</th>
+            <th scope="col">Partidos Perdidos</th>
+            <th scope="col">Goles a Favor</th>
+            <th scope="col">Goles en contra</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var equipo in Model.equipos)
+        {
+            <tr>
+                <td>@equipo.NombreEquipo</td>
+                
+                @{
+                    int cantidadPartidos = 0;
+                    int partidosGanados = 0;
+                    int partidosPerdidos = 0;
+                    int partidosEmpatados = 0;
+                    int golesFavor = 0;
+                    int golesContra = 0;
+
+                    foreach (var partido in Model.partidos)
+                    {
+                        if ((partido.NombreEquipoLocal.NombreEquipo == equipo.NombreEquipo)
+                                    ||(partido.NombreEquipoVisitante.NombreEquipo == equipo.NombreEquipo))
+                        {
+                            cantidadPartidos++;
+                        }
+
+                        if (partido.NombreEquipoLocal.NombreEquipo == equipo.NombreEquipo)
+                        {
+                            if (partido.MarcadorLocal > partido.MarcadorVisitante)
+                            {
+                                partidosGanados++; 
+                            }
+                            else if (partido.MarcadorLocal < partido.MarcadorVisitante)
+                            {
+                                partidosPerdidos++;
+                            }
+                            else
+                            {
+                                partidosEmpatados++;
+                            }
+
+                            golesFavor = golesFavor + partido.MarcadorLocal;
+                            golesContra = golesContra + partido.MarcadorVisitante;
+                        }
+
+                        if (partido.NombreEquipoVisitante.NombreEquipo == equipo.NombreEquipo)
+                        {
+                            if (partido.MarcadorLocal < partido.MarcadorVisitante)
+                            {
+                                partidosGanados++; 
+                            }
+                            else if (partido.MarcadorLocal > partido.MarcadorVisitante)
+                            {
+                                partidosPerdidos++;
+                            }
+                            else
+                            {
+                                partidosEmpatados++;
+                            }
+
+                            golesFavor = golesFavor + partido.MarcadorVisitante;
+                            golesContra = golesContra + partido.MarcadorLocal;
+                        }
+                    }
+                }
+                <td>@cantidadPartidos</td>
+                <td>@partidosGanados</td>
+                <td>@partidosEmpatados</td>
+                <td>@partidosPerdidos</td>
+                <td>@golesFavor</td>
+                <td>@golesContra</td>
+            </tr>
+        }
+    </tbody>
+</table>
