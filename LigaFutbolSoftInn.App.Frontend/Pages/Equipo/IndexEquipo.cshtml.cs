@@ -6,8 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using LigaFutbolSoftInn.App.Persistencia;
 using LigaFutbolSoftInn.App.Dominio;
+using Microsoft.AspNetCore.Authorization;
+
 namespace LigaFutbolSoftInn.App.Frontend.Pages
 {
+    [Authorize]
     public class IndexEquipoModel : PageModel
     {
      private readonly IRepositorioEquipo _repoEquipo;
