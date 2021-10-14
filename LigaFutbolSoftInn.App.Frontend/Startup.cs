@@ -26,6 +26,8 @@ namespace LigaFutbolSoftInn.App.Frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddDbContext<LigaFutbolSoftInn.App.Persistencia.AppContext>();
+            services.AddControllersWithViews();
             services.AddSingleton<IRepositorioEstadio, RepositorioEstadio>();        
             services.AddSingleton<IRepositorioMunicipio, RepositorioMunicipio>();
             services.AddSingleton<IRepositorioEquipo, RepositorioEquipo>();
@@ -33,7 +35,7 @@ namespace LigaFutbolSoftInn.App.Frontend
             services.AddSingleton<IRepositorioArbitro, RepositorioArbitro>();
             services.AddSingleton<IRepositorioDirTecnico, RepositorioDirTecnico>();
             services.AddSingleton<IRepositorioJugador, RepositorioJugador>();
-            services.AddSingleton<IRepositorioNovedad, RepositorioNovedad>(); 
+            services.AddSingleton<IRepositorioNovedad, RepositorioNovedad>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +56,8 @@ namespace LigaFutbolSoftInn.App.Frontend
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

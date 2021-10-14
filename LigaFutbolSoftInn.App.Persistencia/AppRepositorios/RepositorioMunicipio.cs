@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.AccessControl;
 using System;
@@ -58,6 +59,12 @@ namespace LigaFutbolSoftInn.App.Persistencia
             _appContext.Municipios.Remove(municipioEncontrado);
             _appContext.SaveChanges();
             return "Municipio eliminado!";
+        }
+
+        IEnumerable<Municipio> IRepositorioMunicipio.SearchMunicipios(string nombre)
+        {
+            return _appContext.Municipios
+                        .Where(p => p.NombreMunicipio.Contains(nombre));
         }
     }
 }

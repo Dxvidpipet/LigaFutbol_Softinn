@@ -35,26 +35,17 @@ namespace LigaFutbolSoftInn.App.Persistencia
              switch (busqueda)
             {
                 case 0:
-                    return _appContext.Partidos; 
-                    break;
+                    return _appContext.Partidos;
                 case 1:
-                     return _appContext.Partidos.Where(e => e.NombreEquipoLocal.NombreEquipo == nombreall );
-                    break;
+                    return _appContext.Partidos.Where(e => e.NombreEquipoLocal.NombreEquipo == nombreall );
                 case 2:
-                   return _appContext.Partidos.Where(e => e.NombreEquipoVisitante.NombreEquipo == nombreall);
-                   break;
+                    return _appContext.Partidos.Where(e => e.NombreEquipoVisitante.NombreEquipo == nombreall);
                 case 3:
                     return _appContext.Partidos.Where(e => e.Estadio.NombreEstadio == nombreall );
-
-                    break;
                 case 4:
                     return _appContext.Partidos.Where(e => e.Arbitro.NombreArbitro == nombreall);
-
-                    break;
-              default:
-               return _appContext.Partidos;
-            break;
-
+                default:
+                    return _appContext.Partidos;
             }    
          
             // .Where(e => e.Equipo == (Equipo)nombre);
