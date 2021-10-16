@@ -1,0 +1,22 @@
+﻿@page
+@model LigaFutbolSoftInn.App.Pages.AddEquipoModel
+@{
+}
+<h1>Asignar Equipo</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="idDirtecnico">Director Técnico</label>
+        <input type="text" id="idDirTecnico" name="idDirTecnico" class="form-control" value="@Model.dirTecnico.IdDirTecnico" readonly>
+    </div>
+    <div class="form-group">
+        <label for="idEquipo">Equipo</label>
+        <select id="idEquipo" name="idEquipo" class="form-control">
+            @foreach (var equipos in Model.equipos)
+            {
+                <option value = "@equipos.IdEquipo">@equipos.NombreEquipo</option>
+            }
+        </select>
+    </div>
+    <button type ="submit" class="btn btn-primary">Asignar Equipo</button>
+</form>
+<a class="btn btn-secondary" asp-page = "./IndexDirTecnicos">Volver</a>

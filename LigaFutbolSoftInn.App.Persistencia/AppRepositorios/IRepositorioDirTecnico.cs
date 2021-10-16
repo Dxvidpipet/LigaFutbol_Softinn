@@ -12,5 +12,6 @@ namespace LigaFutbolSoftInn.App.Persistencia
         DirTecnico UpdateDirTecnico(DirTecnico dirTecnico);
         string DeleteDirTecnico(int idDirTecnico);
         Equipo AsignarDirTecnicoEquipo(int idDirTecnico, int idEquipo);
+        IEnumerable<DirTecnico> SearchDirTecnicos(string nombre);
     }
 }

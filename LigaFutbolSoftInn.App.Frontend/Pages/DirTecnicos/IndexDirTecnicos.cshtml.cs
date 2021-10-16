@@ -15,13 +15,23 @@ namespace LigaFutbolSoftInn.App.Frontend.Pages
     {
         private readonly IRepositorioDirTecnico _repoDirTecnico;
         public IEnumerable<DirTecnico> dirTecnico {get; set;}
+        public string bActual{get;set;}
         public IndexDirTecnicosModel(IRepositorioDirTecnico repoDirTecnico)
         {
             _repoDirTecnico = repoDirTecnico;
         }
-        public void OnGet()
+        public void OnGet(string b)
         {
-            dirTecnico = _repoDirTecnico.GetAllDirTecnicos();
+            if (String.IsNullOrEmpty(b))
+            {
+                bActual="";
+                dirTecnico = _repoDirTecnico.GetAllDirTecnicos();
+            }
+            else
+            {
+                bActual = b;
+                dirTecnico = _repoDirTecnico.SearchDirTecnicos(b);
+            }
         }
     }
 }

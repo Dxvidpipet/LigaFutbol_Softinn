@@ -1,9 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.AccessControl;
 using System;
 using System.Linq;
 using LigaFutbolSoftInn.App.Dominio;
 using LigaFutbolSoftInn.App.Persistencia;
+using Microsoft.EntityFrameworkCore;
 
 namespace LigaFutbolSoftInn.App.Persistencia
 {
@@ -34,8 +36,13 @@ namespace LigaFutbolSoftInn.App.Persistencia
 
         DirTecnico IRepositorioDirTecnico.ReadDirTecnico(int idDirTecnico)
         {
-            var dirTecnicoEncontrado = _appContext.DirTecnicos.FirstOrDefault(m => m.IdDirTecnico == idDirTecnico);
-            return dirTecnicoEncontrado;
+            /*var dirTecnicoEncontrado = _appContext.DirTecnicos.FirstOrDefault(m => m.IdDirTecnico == idDirTecnico);
+            return dirTecnicoEncontrado;*/
+            var dirTecnico = _appContext.DirTecnicos
+                .Where(p => p.IdDirTecnico ==idDirTecnico)
+                .Include(p => p.Equipo)
+                .FirstOrDefault();
+            return dirTecnico;
         }
 
         DirTecnico IRepositorioDirTecnico.UpdateDirTecnico(DirTecnico dirTecnico)
@@ -66,10 +73,10 @@ namespace LigaFutbolSoftInn.App.Persistencia
 
         Equipo IRepositorioDirTecnico.AsignarDirTecnicoEquipo(int idDirTecnico, int idEquipo)
         {
-            var dirTecnicoEncontrado = _appContext.DirTecnicos.FirstOrDefault(p => p.IdDirTecnico == idDirTecnico);
+            var dirTecnicoEncontrado = _appContext.DirTecnicos.Find(idDirTecnico);
             if (dirTecnicoEncontrado != null)
             { 
-                var equipoEncontrado = _appContext.Equipos.FirstOrDefault(e => e.IdEquipo == idEquipo);
+                var equipoEncontrado = _appContext.Equipos.Find(idEquipo);
                 if (equipoEncontrado != null)
                 { 
                     dirTecnicoEncontrado.Equipo = equipoEncontrado;
@@ -79,6 +86,10 @@ namespace LigaFutbolSoftInn.App.Persistencia
             }
             return null;
         }
-
+        IEnumerable<DirTecnico> IRepositorioDirTecnico.SearchDirTecnicos(string nombre)
+        {
+            return _appContext.DirTecnicos
+                .Where(p => p.NombreDirTecnico.Contains(nombre));
+        }
     }
 }
