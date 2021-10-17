@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Security.AccessControl;
 using System.Collections.Generic;
 using LigaFutbolSoftInn.App.Dominio;
@@ -11,5 +12,7 @@ namespace LigaFutbolSoftInn.App.Persistencia
         Arbitro ReadArbitro(int idArbitro);
         Arbitro UpdateArbitro(Arbitro arbitro);
         string DeleteArbitro(int idArbitro);
+        /*IEnumerable<Arbitro> GetArbitrosColegio(int colegio);*/
+        IEnumerable<Arbitro> SearchArbitros(string nombre);
     }
 }

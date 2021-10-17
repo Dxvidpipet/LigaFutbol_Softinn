@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.AccessControl;
 using System;
@@ -61,6 +62,11 @@ namespace LigaFutbolSoftInn.App.Persistencia
             _appContext.Arbitros.Remove(arbitroEncontrado);
             _appContext.SaveChanges();
             return "Arbitro eliminado!";
+        }
+        IEnumerable<Arbitro> IRepositorioArbitro.SearchArbitros(string nombre)
+        {
+            return _appContext.Arbitros
+                .Where(p => p.NombreArbitro.Contains(nombre));
         }
     }
 }

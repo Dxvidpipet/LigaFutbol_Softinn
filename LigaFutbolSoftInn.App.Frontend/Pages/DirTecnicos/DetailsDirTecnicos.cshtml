@@ -22,7 +22,18 @@
     </tr>
     <tr>
         <th scope="col">Equipo</th>
-        <td>@Model.dirTecnico.Equipo</td>
+        @if (Model.dirTecnico.Equipo ==null)
+        {
+            <td>
+                <a class="btn btn-primary" asp-page="./AddEquipo" asp-route-id = "@Model.dirTecnico.IdDirTecnico">
+                    Asignar Equipo
+                </a>
+            </td>
+        }
+        else
+        {
+            <td>@Model.dirTecnico.Equipo.NombreEquipo</td>
+        }
     </tr>
 </table>
 <a class="btn btn-primary" asp-page="./IndexDirTecnicos">Volver</a>
