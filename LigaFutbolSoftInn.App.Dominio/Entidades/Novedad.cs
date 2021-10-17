@@ -19,5 +19,7 @@ namespace LigaFutbolSoftInn.App.Dominio
         [StringLength(50, ErrorMessage = "Maximo 50 caracteres")]
 		public Jugador Jugador { get; set; }
         public Partido Partido { set; get; }
+       
+        public string TipoNovedad1 {get; set;}
     }
 }

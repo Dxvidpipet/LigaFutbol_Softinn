@@ -15,13 +15,23 @@ namespace LigaFutbolSoftInn.App.Frontend.Pages
     {
      private readonly IRepositorioJugador _repoJugador;
         public IEnumerable<Jugador> jugadores {get; set;}
+        public string bActual {get; set;}
         public IndexJugadorModel(IRepositorioJugador repoJugador)
         {
             _repoJugador= repoJugador;
         }
-        public void OnGet()
+        public void OnGet(string b)
         {
-            jugadores = _repoJugador.GetAllJugadores();
+            if(String.IsNullOrEmpty(b))
+            {
+                bActual = "";
+                jugadores = _repoJugador.GetAllJugadores();
+            }
+            else
+            {
+                bActual = b;
+                jugadores = _repoJugador.SearchJugadores(b);
+            }
         }
     }
 }

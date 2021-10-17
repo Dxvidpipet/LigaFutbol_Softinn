@@ -15,13 +15,24 @@ namespace LigaFutbolSoftInn.App.Frontend.Pages
     {
      private readonly IRepositorioNovedad _repoNovedad;
         public IEnumerable<Novedad> novedades {get; set;}
+        public string bActual {get; set;}
         public IndexNovedadModel(IRepositorioNovedad repoNovedad)
         {
             _repoNovedad= repoNovedad;
         }
-        public void OnGet()
+        public void OnGet(string b)
         {
-            novedades = _repoNovedad.GetAllNovedades();
+            if(String.IsNullOrEmpty(b))
+            {
+                bActual = "";
+                novedades = _repoNovedad.GetAllNovedades();
+            }
+            else
+            {
+                bActual = b;
+                novedades = _repoNovedad.SearchNovedades(b);
+            }
         }
+        
     }
 }

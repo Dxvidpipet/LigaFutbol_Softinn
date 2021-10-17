@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Security.AccessControl;
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using LigaFutbolSoftInn.App.Dominio;
 using LigaFutbolSoftInn.App.Persistencia;
 
@@ -20,7 +21,8 @@ namespace LigaFutbolSoftInn.App.Persistencia
         private readonly AppContext _appContext = new AppContext();
         IEnumerable<Jugador> IRepositorioJugador.GetAllJugadores()
         {
-            return _appContext.Jugadores;
+            return _appContext.Jugadores
+            .Include(p => p.Equipo);
         }
 
         Jugador IRepositorioJugador.CreateJugador(Jugador jugador)
@@ -32,10 +34,12 @@ namespace LigaFutbolSoftInn.App.Persistencia
 
         Jugador IRepositorioJugador.ReadJugador(int idJugador)
         {
-            var jugadorEncontrado = _appContext.Jugadores.FirstOrDefault(m => m.IdJugador == idJugador);
-            return jugadorEncontrado;
+            var Jugador = _appContext.Jugadores
+                        .Where(e => e.IdJugador == idJugador)
+                        .Include(m => m.Equipo)
+                        .FirstOrDefault();
 
-          
+            return Jugador;
         }
 
         Jugador IRepositorioJugador.UpdateJugador(Jugador jugador)
@@ -78,6 +82,11 @@ namespace LigaFutbolSoftInn.App.Persistencia
                 return equipoEncontrado;
             }
             return null;
+        }
+        IEnumerable<Jugador> IRepositorioJugador.SearchJugadores(string nombre)
+        {
+            return _appContext.Jugadores
+                        .Where(p => p.NombreJugador.Contains(nombre));
         }
 
     }

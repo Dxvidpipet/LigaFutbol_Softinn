@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Security.AccessControl;
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using LigaFutbolSoftInn.App.Dominio;
 using LigaFutbolSoftInn.App.Persistencia;
 
@@ -21,7 +22,9 @@ namespace LigaFutbolSoftInn.App.Persistencia
         private readonly AppContext _appContext = new AppContext();
         IEnumerable<Novedad> IRepositorioNovedad.GetAllNovedades()
         {
-            return _appContext.Novedades;
+            return _appContext.Novedades
+            .Include(p => p.Jugador)
+            .Include(p => p.Partido);
         }
 
         Novedad IRepositorioNovedad.CreateNovedad(Novedad novedad)
@@ -32,8 +35,12 @@ namespace LigaFutbolSoftInn.App.Persistencia
         }
         Novedad IRepositorioNovedad.ReadNovedad(int idNovedad)
         {
-            var novedadEncontrado = _appContext.Novedades.FirstOrDefault(m => m.IdNovedad == idNovedad);
-            return novedadEncontrado;
+            var novedad = _appContext.Novedades
+                        .Where(e => e.IdNovedad == idNovedad)
+                        .Include(p => p.Jugador)
+                        .Include(p => p.Partido)
+                        .FirstOrDefault();
+            return novedad;
         }
 
         Novedad IRepositorioNovedad.UpdateNovedad(Novedad novedad)
@@ -81,5 +88,12 @@ namespace LigaFutbolSoftInn.App.Persistencia
             }
             return null;
         }
+        IEnumerable<Novedad> IRepositorioNovedad.SearchNovedades(string tipo)
+        {
+            return _appContext.Novedades
+                        .Where(p => p.TipoNovedad1.Contains (tipo));
+                        
+        }
+
     }
 }
